@@ -1,0 +1,1074 @@
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------
+| Tool Version : Power Design Manager v2026.1 (64-bit)
+| Date         : Wed Sep 30 16:31:20 2026
+---------------------------------------------------------------------------
+
+PDM Project Report
+
+Table of Contents
+-----------------
+1. Summary
+	1.1 Summary
+	1.2 Environment
+	1.3 DFX
+	1.4 On-Chip Static Power
+	1.5 On-Chip Dynamic Power
+2. Estimation
+	2.1 PS
+		2.1.1 PMC
+		2.1.2 LPD
+		2.1.3 FPD
+		2.1.4 MIO Configuration
+	2.2 AI Engine
+		2.2.1 AIE
+	2.3 NoC/DDRMC
+		2.3.1 DDRMC
+		2.3.2 NoC
+	2.4 Clock
+		2.4.1 Clock Manager
+	2.5 Logic
+	2.6 Block RAM
+	2.7 UltraRAM
+	2.8 DSP
+	2.9 I/O
+	2.10 GTY
+	2.11 Hard IP Blocks
+	2.12 CPM
+	2.13 PL PCIe4
+	2.14 MRMAC
+3. Power Design
+	3.1 Part
+	3.2 Power Summary
+	3.3 Power Rail Characteristics
+	3.4 Power Delivery Design
+4. Power Management
+	4.1 Summary of Savings
+	4.2 Clock Domain Power
+	4.3 Potential Savings
+
+
+1. Summary
+----------
+
+1.1 Summary
+-----------
+
++----------------------------------------------+-------------------------------+
+| Total On-Chip Power                          | 42.927 W                      | 
+|  Static Power                                | 13.569 W                      | 
+|  Dynamic Power                               | 29.358 W                      | 
+| Junction Temperature                         | 100 C                         | 
+| Thermal Margin                               | 0 C                           | 
+| Thermal Power Margin                         |                               | 
+| Thermal Power Margin with excursion to 110C  | 11.946 W                      | 
+| Characterization                             | Production (+/- 15% accuracy) | 
++----------------------------------------------+-------------------------------+
+
+
+1.2 Environment
+---------------
+
++------------------------------------------+-------------+-------------+
+| Junction Temperature (Tj)                | Force Tj    | 100 C       | 
+| Ambient Temperature (Ta)                 |             | 25 C        | 
+| Effective Theta JA                       | Calculated  | 0.83712 C/W | 
+| Max. Junction Temperature                |             | 100 C       | 
+| Max. Junction Temperature with Excursion |             | 110 C       | 
+| Design Power Budget                      |             |             | 
++------------------------------------------+-------------+-------------+
+
+
+1.3 DFX
+-------
+
++-----------+-----------------------------------------+
+| DFX Usage | No DFX, or no RPs include NoC resources | 
++-----------+-----------------------------------------+
+
+
+1.4 On-Chip Static Power
+------------------------
+
++-------------+-----------+------------+
+| Resource    | Power     | Power %    | 
++-------------+-----------+------------+
+| Static      |           |            | 
+|  PL         | 7.48897 W | 17.44584 % | 
+|  PS+PMC     | 0.22663 W | 0.52795 %  | 
+|  AIE        | 4.85637 W | 11.3131 %  | 
+|  NoC+DDRMC  | 0.99745 W | 2.32359 %  | 
+|  GTs        |           |            | 
+|  GTY        | 0 W       | 0 %        | 
++-------------+-----------+------------+
+
+
+1.5 On-Chip Dynamic Power
+-------------------------
+
++---------------------------+-----------+-----------+
+| Resource                  | Power     | Power %   | 
++---------------------------+-----------+-----------+
+| PMC                       | 0.41680 W | 0.97096 % | 
+| Processing System         |           |           | 
+|  LPD                      | 0.18803 W | 0.43803 % | 
+|  FPD                      | 0.67393 W | 1.56994 % | 
+| AI Engine                 | 21.732 W  | 50.6255 % | 
+| NoC                       | 1.51215 W | 3.52261 % | 
+| Programmable Logic        |           |           | 
+|  Clocking                 | 0.796 W   | 1.85431 % | 
+|  Logic                    | 0.06 W    | 0.13977 % | 
+|  BRAM                     | 0.005 W   | 0.01165 % | 
+|  URAM                     | 0 W       | 0 %       | 
+|  DSP                      | 0 W       | 0 %       | 
+|  Other                    | 0 W       | 0 %       | 
+| I/O                       |           |           | 
+|  Interface                | 3.69 W    | 8.59599 % | 
+|  Hard MC                  | 0.28389 W | 0.66134 % | 
+| Transceiver               |           |           | 
+|  GTY                      | 0 W       | 0 %       | 
+| Hard IP                   |           |           | 
+|  CPM                      | 0 W       | 0 %       | 
+|  MRMAC                    | 0 W       | 0 %       | 
+|  PCIE                     | 0 W       | 0 %       | 
++---------------------------+-----------+-----------+
+
+
+
+2. Estimation
+-------------
+
+2.1 PS
+------
+
++--------------------------------+----------------+-----------+
+| Domain                         | Current Status | Power     | 
++--------------------------------+----------------+-----------+
+| Platform Management Controller | Power On       | 0.41680 W | 
+| Low Power Domain               | Power On       | 0.14749 W | 
+| Full Power Domain              | Power On       | 0.63206 W | 
++--------------------------------+----------------+-----------+
+
+
++--------------+-------+------+-------------+-----------+
+|              | Avail | Used | Utilization | Power     | 
++--------------+-------+------+-------------+-----------+
+| Dual RPU     | 2     | 1    | 50 %        | 0.03354 W | 
+| TCM&OCM      | 8     | 3    | 37.5 %      | 0.01654 W | 
+| Interconnect | 1     | 1    | 100 %       | 0.07246 W | 
+| PLLs         | 1     |      |             | 0.04055 W | 
+| MIO          | 26    | 6    | 23.0769 %   | 0.02495 W | 
+| Total        |       |      |             | 0.18803 W | 
++--------------+-------+------+-------------+-----------+
+
+
++--------------+-------+------+-------------+-----------+
+|              | Avail | Used | Utilization | Power     | 
++--------------+-------+------+-------------+-----------+
+| APU          | 2     | 2    | 100 %       | 0.53885 W | 
+| L2 Cache     | 1     | 1    | 100 %       | 0.02973 W | 
+| Interconnect | 1     | 1    | 100 %       | 0.06348 W | 
+| PLLs         | 1     | 1    | 100 %       | 0.04187 W | 
+| Total        |       |      |             | 0.67393 W | 
++--------------+-------+------+-------------+-----------+
+
+
++------------+---------+-----------+
+| Supply     | Voltage | Power     | 
++------------+---------+-----------+
+| VCC_PMC    | 0.8 V   | 0.28053 W | 
+| VCCAUX_PMC | 1.5 V   | 0.10154 W | 
+| VCC_PSLP   | 0.8 V   | 0.12254 W | 
+| VCC_PSFP   | 0.8 V   | 0.63206 W | 
+| VCCO_500   | 1.8 V   | 0 W       | 
+| VCCO_501   | 1.8 V   | 0 W       | 
+| VCCO_502   | 1.8 V   | 0.02495 W | 
+| VCCO_503   | 1.8 V   | 0.00728 W | 
+| Total      |         | 1.17 W    | 
++------------+---------+-----------+
+
+
+2.1.1 PMC
+---------
+
++------------------+-----------------+----------+
+|                  | Frequency (MHz) | Load     | 
++------------------+-----------------+----------+
+| FPMC_IRO_CLK     | 400             | 90.00 %  | 
+| XilSEM CRAM Scan | 400             | DISABLED | 
+| SysMon           | ENABLED         |          | 
++------------------+-----------------+----------+
+
+
+2.1.2 LPD
+---------
+
++--------------+---------------+------------+------+-----------+
+|              | Active Blocks | Freq (MHz) | Load | VCC_PSLP  | 
++--------------+---------------+------------+------+-----------+
+| R-5          | 1             | 600        | 90 % | 0.03354 W | 
+| TCM          | 2             |            |      | 0.01019 W | 
+| OCM          | 1             |            |      | 0.00635 W | 
+| Interconnect |               | 600        | 90 % | 0.07246 W | 
++--------------+---------------+------------+------+-----------+
+
+
+2.1.3 FPD
+---------
+
++--------------+---------------+------------+------+-----------+
+|              | Active Blocks | Freq (MHz) | Load | VCC_PSFP  | 
++--------------+---------------+------------+------+-----------+
+| A-72         | 2             | 1350       | 90 % | 0.53885 W | 
+| L2 Cache     | 1             |            |      | 0.02973 W | 
+| Interconnect |               | 825        | 90 % | 0.05859 W | 
+| CCI          |               | 150        | 90 % | 0.00489 W | 
++--------------+---------------+------------+------+-----------+
+
+
+2.1.4 MIO Configuration
+-----------------------
+
++----------+---------+-------+------+-----------+
+| Bank     | Voltage | Avail | Used | Power     | 
++----------+---------+-------+------+-----------+
+| Bank 500 | 1.8 V   | 26    | 0    | 0 W       | 
+| Bank 501 | 1.8 V   | 26    | 0    | 0 W       | 
+| Bank 502 | 1.8 V   | 26    | 6    | 0.02495 W | 
+| Bank 503 | 1.8 V   |       |      |           | 
++----------+---------+-------+------+-----------+
+
+
++--------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+| Interface          | Avail | Num Used | Frequency (MHz) | Activity Rate % | GPIOs Used | VCC_PSLP | VCCO_500 | Power | 
++--------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+| SD/eMMC            | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Octal SPI/Quad SPI | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SelectMAP          | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Tamper Trig        | 4     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| PMC_I2C            | 6     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| CAN                | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| LPD_I2C            | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SYSMON_I2C         | 6     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| PCIe Resets        | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SPI                | 4     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Trace Port         | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| TTC                | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| UART               | 6     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| USB 2.0            | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| LPD SWDT           | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| FPD SWDT           | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Bank 500 PMC_GPIO  | 26    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
++--------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+
+
++----------------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+| Interface                  | Avail | Num Used | Frequency (MHz) | Activity Rate % | GPIOs Used | VCC_PSLP | VCCO_501 | Power | 
++----------------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+| SD/eMMC                    | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SelectMAP                  | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Tamper Trig                | 4     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| PMC_I2C                    | 7     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| GEM (Gigabit Ethernet Mac) | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| GEM MDIO                   | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| GEM TSU Clock              | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| CAN                        | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| LPD_I2C                    | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SYSMON_I2C                 | 6     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| PCIe Resets                | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| SPI                        | 4     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Trace Port                 | 1     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| TTC                        | 12    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| UART                       | 6     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| LPD SWDT                   | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| FPD SWDT                   | 2     |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
+| Bank 501 PMC_GPIO          | 26    |          |                 |                 | 0          | 0 W      | 0 mW     | 0 W   | 
++----------------------------+-------+----------+-----------------+-----------------+------------+----------+----------+-------+
+
+
++----------------------------+-------+----------+-----------------+-----------------+------------+-----------+-------------+-----------+
+| Interface                  | Avail | Num Used | Frequency (MHz) | Activity Rate % | GPIOs Used | VCC_PSLP  | VCCO_502    | Power     | 
++----------------------------+-------+----------+-----------------+-----------------+------------+-----------+-------------+-----------+
+| GEM (Gigabit Ethernet Mac) | 2     |          | 125             |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| GEM MDIO                   | 1     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| GEM TSU Clock              | 2     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| CAN                        | 13    |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| LPD_I2C                    | 13    |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| SYSMON_I2C                 | 6     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| PCIe Resets                | 1     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| SPI                        | 4     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| Trace Port                 | 1     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| TTC                        | 12    |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| UART                       | 6     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| LPD SWDT                   | 2     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| FPD SWDT                   | 2     |          |                 |                 | 0          | 0 W       | 0 mW        | 0 W       | 
+| Bank 502 LPD_GPIO          | 26    | 6        | 100             |                 | 6          | 0.00419 W | 24.95157 mW | 0.02914 W | 
++----------------------------+-------+----------+-----------------+-----------------+------------+-----------+-------------+-----------+
+
+
+2.2 AI Engine
+-------------
+
++--------+---------+------------+
+| Supply | Voltage | Power      | 
++--------+---------+------------+
+| VCCINT | 0.8 V   | 21.70306 W | 
+| VCCAUX | 1.5 V   | 0.02921 W  | 
+| Total  |         | 21.732 W   | 
++--------+---------+------------+
+
+
++-------+-----------+------+-------------+-----------+
+| Type  | Available | Used | Utilization | Power     | 
++-------+-----------+------+-------------+-----------+
+| Cores | 400       | 215  | 53.75 %     | 21.732 W  | 
+| PL    | 546       | 2    | 0.36630 %   | 0.00733 W | 
+| NoC   | 32        | 0    | 0 %         | 0 W       | 
++-------+-----------+------+-------------+-----------+
+
+
++----------+-----------+
+| Type     | Value     | 
++----------+-----------+
+| AIE Core | 15.4363 W | 
+| Memory   | 6.29597 W | 
++----------+-----------+
+
+
+2.2.1 AIE
+---------
+
++-----------+----------+
+| Type      | Value    | 
++-----------+----------+
+| Frequency | 1250 MHz | 
++-----------+----------+
+
+
++------+-------------------+-----------+
+| Type | Number of Streams | Power     | 
++------+-------------------+-----------+
+| PL   | 2                 | 0.00733 W | 
+| NoC  | 0                 | 0 W       | 
++------+-------------------+-----------+
+
+
++-------------+----------------+-------+-------------+-------------+--------------+-----------------+-----------------+-------------------+--------------+---------------+
+| Name        | Work Load Type | Cores | Kernel Type | Vector Load | Memory Banks | Memory R/W Rate | AI Engine Tiles | Interconnect Load | Vccint Power | User Comments | 
++-------------+----------------+-------+-------------+-------------+--------------+-----------------+-----------------+-------------------+--------------+---------------+
+| ai_engine_0 | DSP            | 215   | Int16       | 15 %        | 814          | 20 %            | 288             | 25.1789 %         | 21.14225     |               | 
++-------------+----------------+-------+-------------+-------------+--------------+-----------------+-----------------+-------------------+--------------+---------------+
+
+
+2.3 NoC/DDRMC
+-------------
+
++-------------------+-----------+------+-------------+-----------+
+| Type              | Available | Used | Utilization | Power     | 
++-------------------+-----------+------+-------------+-----------+
+| NoC               |           |      |             | 0.19500 W | 
+| DDRMC             | 4         | 3    | 75 %        | 0.28389 W | 
+| NoC Clock Buffers | 64        | 34   | 53.125 %    | 1.31715 W | 
++-------------------+-----------+------+-------------+-----------+
+
+
++-------------+---------+-----------+
+| Supply      | Voltage | Power     | 
++-------------+---------+-----------+
+| VCC_SOC     | 0.8 V   | 1.79604 W | 
+| Total       |         | 1.796 W   | 
++-------------+---------+-----------+
+
+
++-----------------+-------+
+| Frequency (MHz) | 1000  | 
++-----------------+-------+
+
+
++-----------+-----------------------------------------+--------------------------+
+| DFX Usage | No DFX, or no RPs include NoC resources | NoC Clock gating Enabled | 
++-----------+-----------------------------------------+--------------------------+
+
+
+2.3.1 DDRMC
+-----------
+
++---------+---------+-----------------------------------------------------------------------------+-----------+----------+----------+-----------------+------------------+----------+------------------+------------+------------------+--------------+----------------+-----------------------+------------------------+-------------------+--------------------+---------------+---------------+------------------------+
+| Ip Type | Ip Name | Name                                                                        | DRAM Type | Standard | ECC      | Counter Measure | Crypto Selection | Channels | Data Rate (Mbps) | Data Width | Total Data Width | Data Pattern | Access Pattern | Read Bandwidth (MBps) | Write Bandwidth (MBps) | Input Termination | Output Termination | VCC_SOC Power | User Comments | Crypto Clock Frequency | 
++---------+---------+-----------------------------------------------------------------------------+-----------+----------+----------+-----------------+------------------+----------+------------------+------------+------------------+--------------+----------------+-----------------------+------------------------+-------------------+--------------------+---------------+---------------+------------------------+
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main   |           | DDR4     | Disabled |                 |                  | 1        | 3200             | 64         | 64               |              |                | 2916                  | 4240                   | RTT_40            | RDRV_40            | 0.16106 W     |               | 0                      | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main |           | LPDDR4   | Disabled |                 |                  | 2        | 3906             | 32         | 32               |              |                | 259                   | 323                    | RTT_40            | RDRV_40            | 0.06141 W     |               | 0                      | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main |           | LPDDR4   | Disabled |                 |                  | 2        | 3906             | 32         | 32               |              |                | 259                   | 323                    | RTT_40            | RDRV_40            | 0.06141 W     |               | 0                      | 
++---------+---------+-----------------------------------------------------------------------------+-----------+----------+----------+-----------------+------------------+----------+------------------+------------+------------------+--------------+----------------+-----------------------+------------------------+-------------------+--------------------+---------------+---------------+------------------------+
+
+
+2.3.2 NoC
+---------
+
++---------+---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-----------------------+------------------------+-------------------------------+--------------------------------+----------+-------------+-------------+---------+---------+---------------+---------------+
+| Ip Type | Ip Name | Name                                                                                                                                                                            | Data Path   | Read Bandwidth (MBps) | Write Bandwidth (MBps) | Read Transaction Size (Bytes) | Write Transaction Size (Bytes) | Switches | G1 Switches | G2 Switches | G1 NPS6 | G2 NPS6 | VCC_SOC Power | User Comments | 
++---------+---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-----------------------+------------------------+-------------------------------+--------------------------------+----------+-------------+-------------+---------+---------+---------------+---------------+
+|         |         | vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST | PS_TO_AIE   | 5                     | 6                      | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00031 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00410 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 7        | 7           | 0           | 0       | 0       | 0.00255 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 128                   | 160                    | 64                            | 64                             | 5        | 5           | 0           | 0       | 0       | 0.00408 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST | PS_TO_AIE   | 5                     | 6                      | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00031 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 128                   | 160                    | 64                            | 64                             | 4        | 4           | 0           | 0       | 0       | 0.00356 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00410 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 7        | 7           | 0           | 0       | 0       | 0.00255 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST | PS_TO_AIE   | 5                     | 6                      | 64                            | 64                             | 14       | 14          | 0           | 0       | 0       | 0.00033 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 128                   | 160                    | 64                            | 64                             | 5        | 5           | 0           | 0       | 0       | 0.00408 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00410 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 7        | 7           | 0           | 0       | 0       | 0.00255 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST | PS_TO_AIE   | 5                     | 6                      | 64                            | 64                             | 14       | 14          | 0           | 0       | 0       | 0.00033 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00410 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PS_TO_DDRC  | 64                    | 80                     | 64                            | 64                             | 7        | 7           | 0           | 0       | 0       | 0.00255 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 128                   | 160                    | 64                            | 64                             | 4        | 4           | 0           | 0       | 0       | 0.00356 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S04_AXI_nmu/bd_27ec_S04_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 5                     | 6                      | 64                            | 64                             | 5        | 5           | 0           | 0       | 0       | 0.00016 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S05_AXI_nmu/bd_27ec_S05_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 5                     | 6                      | 64                            | 64                             | 2        | 2           | 0           | 0       | 0       | 0.00010 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S06_AXI_rpu/bd_27ec_S06_AXI_rpu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PS_TO_DDRC  | 5                     | 6                      | 64                            | 64                             | 4        | 4           | 0           | 0       | 0       | 0.00014 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST | PMC_TO_AIE  | 5                     | 6                      | 64                            | 64                             | 14       | 14          | 0           | 0       | 0       | 0.00033 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PMC_TO_DDRC | 5                     | 6                      | 64                            | 64                             | 4        | 4           | 0           | 0       | 0       | 0.00014 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PMC_TO_DDRC | 3                     | 3                      | 64                            | 64                             | 13       | 13          | 0           | 0       | 0       | 0.00017 W     |               | 
+|         |         | vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main       | PMC_TO_DDRC | 3                     | 3                      | 64                            | 64                             | 7        | 7           | 0           | 0       | 0       | 0.00011 W     |               | 
+|         |         | vitis_design_i/noc_ddr4/inst/S00_AXI_nmu/bd_90d1_S00_AXI_nmu_0_top_INST/NOC_NMU512_INST/Port1/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PL_TO_DDRC  | 1192                  | 1788                   | 32                            | 32                             | 6        | 6           | 0           | 0       | 0       | 0.06155 W     |               | 
+|         |         | vitis_design_i/noc_ddr4/inst/S01_AXI_nmu/bd_90d1_S01_AXI_nmu_0_top_INST/NOC_NMU512_INST/Port3/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main         | PL_TO_DDRC  | 1192                  | 1788                   | 32                            | 32                             | 10       | 10          | 0           | 0       | 0       | 0.08916 W     |               | 
++---------+---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-----------------------+------------------------+-------------------------------+--------------------------------+----------+-------------+-------------+---------+---------+---------------+---------------+
+
+
+2.4 Clock
+---------
+
++---------+---------+-----------+
+| Supply  | Voltage | Power     | 
++---------+---------+-----------+
+| VCCINT  | 0.8 V   | 0.06508 W | 
+| VCC_RAM | 0.8 V   | 0.02423 W | 
+| VCC_IO  | 0.8 V   | 0.17250 W | 
+| VCCAUX  | 1.5 V   | 0.53369 W | 
+| Total   |         | 0.796 W   | 
++---------+---------+-----------+
+
+
++-------+-----------+------+-------------+-----------+
+| Type  | Available | Used | Utilization | Power     | 
++-------+-----------+------+-------------+-----------+
+| MMCM  | 12        | 1    | 8.33333 %   | 0.05086 W | 
+| DPLL  | 25        | 0    | 0 %         | 0 W       | 
+| XPLL  | 24        | 9    | 37.5 %      | 0.67956 W | 
+| Clock |           |      |             | 0.06508 W | 
++-------+-----------+------+-------------+-----------+
+
+
++---------+---------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------------+--------+-------------+---------------------+--------------------+-----------+---------+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+| Ip Type | Ip Name | Name                                                                            | Source                                                                       | Frequency (MHz) | Fanout | Fanout/Site | Clock Buffer Enable | Slice Clock Enable | VCCINT    | VCC_RAM | Power (W) | Clock Manager                                                                                                                                                                                                                                                                                                       | Clock Tag                                                                                      | 
++---------+---------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------------+--------+-------------+---------------------+--------------------+-----------+---------+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+|         |         | clk_pl_0                                                                        |                                                                              | 100             | 1      | 1           | 100 %               | 0 %                | 0.00001 W | 0 W     | 0.00001 W | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst                                                                                                                                                                                                                                                   | 100.000 MHz (clk_pl_0)                                                                         | 
+|         |         | ddr4_dimm1_sma_clk_clk_p                                                        |                                                                              | 200             | 3      | 1           | 100 %               | 0 %                | 0.00007 W | 0 W     | 0.00007 W | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1                                                                                                                                                                                                                                          | 200.000 MHz (ddr4_dimm1_sma_clk_clk_p)                                                         | 
+|         |         | lpddr4_sma_clk1_clk_p                                                           |                                                                              | 200.32          | 2      | 1           | 100 %               | 0 %                | 0.00004 W | 0 W     | 0.00004 W | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1                                                                                                                                                           | 200.320 MHz (lpddr4_sma_clk1_clk_p)                                                            | 
+|         |         | lpddr4_sma_clk2_clk_p                                                           |                                                                              | 200.32          | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 200.320 MHz (lpddr4_sma_clk2_clk_p)                                                            | 
+|         |         | clock_autogen_0                                                                 | Internal                                                                     | 800             | 2      | 6.5         | 100 %               | 50 %               | 0 W       | 0 W     | 0 W       | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2                                                                                                                                                               | 800.000 MHz (clock_autogen_0)                                                                  | 
+|         |         | clock_autogen_1                                                                 | Internal                                                                     | 976.6           | 4      | 6.5         | 100 %               | 50 %               | 0 W       | 0 W     | 0 W       | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2 | 976.600 MHz (clock_autogen_1)                                                                  | 
+|         |         | Unassigned_Clock                                                                | Internal                                                                     | 312.5           | 0      | 6.5         | 100 %               | 50 %               | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 312.500 MHz (Unassigned_Clock)                                                                 | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2] | Internal                                                                     | 1953.125        | 64     | 6.5         | 100 %               | 50 %               | 0.00194 W | 0 W     | 0.00194 W |                                                                                                                                                                                                                                                                                                                     | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2] | Internal                                                                     | 1953.125        | 64     | 6.5         | 100 %               | 50 %               | 0.00194 W | 0 W     | 0.00194 W |                                                                                                                                                                                                                                                                                                                     | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0] | Internal                                                                     | 1953.125        | 42     | 6.5         | 100 %               | 50 %               | 0.00129 W | 0 W     | 0.00129 W |                                                                                                                                                                                                                                                                                                                     | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll     | Internal                                                                     | 1953.124        | 22     | 6.5         | 100 %               | 50 %               | 0.00065 W | 0 W     | 0.00065 W |                                                                                                                                                                                                                                                                                                                     | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0] | Internal                                                                     | 1953.125        | 20     | 6.5         | 100 %               | 50 %               | 0.00065 W | 0 W     | 0.00065 W |                                                                                                                                                                                                                                                                                                                     | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll     | Internal                                                                     | 1953.124        | 44     | 6.5         | 100 %               | 50 %               | 0.00129 W | 0 W     | 0.00129 W |                                                                                                                                                                                                                                                                                                                     | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll       | Internal                                                                     | 1600            | 27     | 6.5         | 100 %               | 50 %               | 0.00071 W | 0 W     | 0.00071 W |                                                                                                                                                                                                                                                                                                                     | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]   | Internal                                                                     | 1600            | 24     | 6.5         | 100 %               | 50 %               | 0.00053 W | 0 W     | 0.00053 W |                                                                                                                                                                                                                                                                                                                     | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0])   | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]   | Internal                                                                     | 1600            | 64     | 6.5         | 100 %               | 50 %               | 0.00159 W | 0 W     | 0.00159 W |                                                                                                                                                                                                                                                                                                                     | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2])   | 
+|         |         | lpddr4_sma_clk1_clk_p_0                                                         | Internal                                                                     | 200.321         | 0      | 6.5         | 100 %               | 50 %               | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 200.321 MHz (lpddr4_sma_clk1_clk_p_0)                                                          | 
+|         |         | lpddr4_sma_clk2_clk_p_0                                                         | Internal                                                                     | 200.321         | 0      | 6.5         | 100 %               | 50 %               | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 200.321 MHz (lpddr4_sma_clk2_clk_p_0)                                                          | 
+|         |         | clkfbout_primitive                                                              | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst            | 100             | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 100.000 MHz (clkfbout_primitive)                                                               | 
+|         |         | clkout1_primitive                                                               | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst            | 104.17          | 2868   | 4.048       | 100 %               | 73.53 %            | 0.01387 W | 0 W     | 0.01387 W |                                                                                                                                                                                                                                                                                                                     | 104.170 MHz (clkout1_primitive)                                                                | 
+|         |         | clkout3_primitive                                                               | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst            | 312.5           | 4155   | 5.459       | 100 %               | 40.05 %            | 0.04052 W | 0 W     | 0.04052 W |                                                                                                                                                                                                                                                                                                                     | 312.500 MHz (clkout3_primitive)                                                                | 
+|         |         | pll_clktoxphy[0]                                                                | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0   | 3200            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3200.000 MHz (pll_clktoxphy[0])                                                                | 
+|         |         | pll_clktoxphy[0]_1                                                              | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clktoxphy[0]_1)                                                              | 
+|         |         | pll_clktoxphy[0]_2                                                              | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clktoxphy[0]_2)                                                              | 
+|         |         | bank1_clkout0                                                                   | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1   | 800             | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 800.000 MHz (bank1_clkout0)                                                                    | 
+|         |         | bank1_xpll0_fifo_rd_clk                                                         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1   | 800             | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 800.000 MHz (bank1_xpll0_fifo_rd_clk)                                                          | 
+|         |         | mc_clk_xpll                                                                     | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1   | 800             | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 800.000 MHz (mc_clk_xpll)                                                                      | 
+|         |         | pll_clk_xpll                                                                    | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1   | 3200            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3200.000 MHz (pll_clk_xpll)                                                                    | 
+|         |         | bank1_clkout0_1                                                                 | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (bank1_clkout0_1)                                                                  | 
+|         |         | bank1_xpll0_fifo_rd_clk_1                                                       | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (bank1_xpll0_fifo_rd_clk_1)                                                        | 
+|         |         | mc_clk_xpll_1                                                                   | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (mc_clk_xpll_1)                                                                    | 
+|         |         | pll_clk_xpll_1                                                                  | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clk_xpll_1)                                                                  | 
+|         |         | bank1_clkout0_2                                                                 | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (bank1_clkout0_2)                                                                  | 
+|         |         | bank1_xpll0_fifo_rd_clk_2                                                       | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (bank1_xpll0_fifo_rd_clk_2)                                                        | 
+|         |         | mc_clk_xpll_2                                                                   | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 976.6           | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 976.600 MHz (mc_clk_xpll_2)                                                                    | 
+|         |         | pll_clk_xpll_2                                                                  | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clk_xpll_2)                                                                  | 
+|         |         | pll_clktoxphy[2]                                                                | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2   | 3200            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3200.000 MHz (pll_clktoxphy[2])                                                                | 
+|         |         | pll_clktoxphy[2]_1                                                              | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clktoxphy[2]_1)                                                              | 
+|         |         | pll_clktoxphy[2]_2                                                              | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2 | 3906            | 0      | 1           | 100 %               | 0 %                | 0 W       | 0 W     | 0 W       |                                                                                                                                                                                                                                                                                                                     | 3906.000 MHz (pll_clktoxphy[2]_2)                                                              | 
++---------+---------+---------------------------------------------------------------------------------+------------------------------------------------------------------------------+-----------------+--------+-------------+---------------------+--------------------+-----------+---------+-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------+
+
+
+2.4.1 Clock Manager
+-------------------
+
++---------+---------+-----------------------------------------------------------------------------------------------------+------+-----------+---------------------+----------------+------------------+-----------+--------+-----------+-----------+-----------+-------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------+---------------------------------------------------------------------------+
+| Ip Type | Ip Name | Name                                                                                                | Type | Ref Clock | VCO Frequency (MHz) | Divide Counter | Multiply Counter | VCC_IO    | VCCINT | VCCAUX    | VCC_RAM   | Power (W) | Phase Shift | Clock 0 Divide | Clock 1 Divide | Clock 2 Divide | Clock 3 Divide | Clock 4 Divide | Clock 5 Divide | Clock 6 Divide | Power Down | Clock 0 Fanout Row | Clock 1 Fanout Row | Clock 2 Fanout Row | Clock 3 Fanout Row | Clock 4 Fanout Row | Clock 5 Fanout Row | Clock 6 Fanout Row | Input Clock              | Output Clocks                                                             | 
++---------+---------+-----------------------------------------------------------------------------------------------------+------+-----------+---------------------+----------------+------------------+-----------+--------+-----------+-----------+-----------+-------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------+---------------------------------------------------------------------------+
+|         |         | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst:clk_pl_0                          | MMCM | 100       | 2500                | 1              | 25               | 0 W       | 0 W    | 0.02664 W | 0.02423 W | 0.05086 W | None        | 25             | 24             | 8              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clk_pl_0                 | clkfbout_primitiveclkout1_primitiveclkout3_primitive                | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0:clock_autogen_0          | XPLL | 800       | 3200                | 2              | 8                | 0.01401 W | 0 W    | 0.05318 W | 0 W       | 0.06719 W | None        | 1              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_0          | pll_clktoxphy[0]                                                    | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0:clock_autogen_1        | XPLL | 976.6     | 3906.4              | 2              | 8                | 0.01859 W | 0 W    | 0.05792 W | 0 W       | 0.07651 W | None        | 2              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_1          | pll_clktoxphy[0]_1                                                  | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0:clock_autogen_1        | XPLL | 976.6     | 3906.4              | 2              | 8                | 0.01859 W | 0 W    | 0.05792 W | 0 W       | 0.07651 W | None        | 2              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_1          | pll_clktoxphy[0]_2                                                  | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1:ddr4_dimm1_sma_clk_clk_p | XPLL | 200       | 3200                | 1              | 16               | 0.01979 W | 0 W    | 0.05318 W | 0 W       | 0.07297 W | None        | 4              | 4              | 4              | 1              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | ddr4_dimm1_sma_clk_clk_p | bank1_clkout0bank1_xpll0_fifo_rd_clkmc_clk_xpllpll_clk_xpll         | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1:lpddr4_sma_clk1_clk_p  | XPLL | 200.32    | 3906.24             | 2              | 39               | 0.02516 W | 0 W    | 0.05792 W | 0 W       | 0.08308 W | None        | 4              | 4              | 4              | 2              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | lpddr4_sma_clk1_clk_p    | bank1_clkout0_1bank1_xpll0_fifo_rd_clk_1mc_clk_xpll_1pll_clk_xpll_1 | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1:lpddr4_sma_clk1_clk_p  | XPLL | 200.32    | 3906.24             | 2              | 39               | 0.02516 W | 0 W    | 0.05792 W | 0 W       | 0.08308 W | None        | 4              | 4              | 4              | 2              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | lpddr4_sma_clk1_clk_p    | bank1_clkout0_2bank1_xpll0_fifo_rd_clk_2mc_clk_xpll_2pll_clk_xpll_2 | 
+|         |         | vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2:clock_autogen_0          | XPLL | 800       | 3200                | 2              | 8                | 0.01401 W | 0 W    | 0.05318 W | 0 W       | 0.06719 W | None        | 1              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_0          | pll_clktoxphy[2]                                                    | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2:clock_autogen_1        | XPLL | 976.6     | 3906.4              | 2              | 8                | 0.01859 W | 0 W    | 0.05792 W | 0 W       | 0.07651 W | None        | 2              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_1          | pll_clktoxphy[2]_1                                                  | 
+|         |         | vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2:clock_autogen_1        | XPLL | 976.6     | 3906.4              | 2              | 8                | 0.01859 W | 0 W    | 0.05792 W | 0 W       | 0.07651 W | None        | 2              | 0              | 0              | 0              | 0              | 0              | 0              | 0 %        |                    |                    |                    |                    |                    |                    |                    | clock_autogen_1          | pll_clktoxphy[2]_2                                                  | 
++---------+---------+-----------------------------------------------------------------------------------------------------+------+-----------+---------------------+----------------+------------------+-----------+--------+-----------+-----------+-----------+-------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------------+---------------------------------------------------------------------------+
+
+
+2.5 Logic
+---------
+
++--------+---------+-----------+
+| Supply | Voltage | Power     | 
++--------+---------+-----------+
+| VCCINT | 0.8 V   | 0.05980 W | 
++--------+---------+-----------+
+
+
++-------------------+-----------+------+-------------+
+| Type              | Available | Used | Utilization | 
++-------------------+-----------+------+-------------+
+| Registers         | 1799680   | 6366 | 0.35373 %   | 
+| LUTs              | 899840    | 4737 | 0.52643 %   | 
+|  Logic            | 899840    | 4082 | 0.45364 %   | 
+|  Shift Registers  | 449920    | 635  | 0.14114 %   | 
+|  Distributed RAMs | 449920    | 20   | 0.00445 %   | 
++-------------------+-----------+------+-------------+
+
+
++---------+---------+---------------------------------------------------------------+---------------------------------+---------------+-------------------------+--------------------------+-----------+-------------+--------------------+--------------+---------------+
+| Ip Type | Ip Name | Name                                                          | Clock                           | LUTs as Logic | LUTs as Shift Registers | LUTs as Distributed RAMs | Registers | Toggle Rate | Routing Complexity | VCCINT Power | User Comments | 
++---------+---------+---------------------------------------------------------------+---------------------------------+---------------+-------------------------+--------------------------+-----------+-------------+--------------------+--------------+---------------+
+|         |         | vitis_design_wrapper/vitis_design_i/Unassigned_Clock LUTs     | 312.500 MHz (Unassigned_Clock)  | 8             | 0                       | 0                        | 0         | 13.861 %    | 13.8888            | 0.00013 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout1_primitive LUTs    | 104.170 MHz (clkout1_primitive) | 2201          | 0                       | 0                        | 0         | 8.656 %     | 9.863              | 0.00455 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive LUTs    | 312.500 MHz (clkout3_primitive) | 1831          | 0                       | 0                        | 0         | 7.167 %     | 9.4043             | 0.00898 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout1_primitive SRLs    | 104.170 MHz (clkout1_primitive) | 0             | 7                       | 0                        | 0         | 0 %         | 3.3099             | 0 W          |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive SRLs    | 312.500 MHz (clkout3_primitive) | 0             | 628                     | 0                        | 0         | 32.41 %     | 0.01065            | 0.01839 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive LUTRAMs | 312.500 MHz (clkout3_primitive) | 0             | 0                       | 20                       | 0         | 15.006 %    | 12.8332            | 0.00079 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout1_primitive FFs     | 104.170 MHz (clkout1_primitive) | 0             | 0                       | 0                        | 2819      | 5.951 %     | 10.6715            | 0.00248 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive FFs     | 312.500 MHz (clkout3_primitive) | 0             | 0                       | 0                        | 3463      | 5.22 %      | 11.3585            | 0.00924 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout1_primitive HFNs    | 104.170 MHz (clkout1_primitive) | 16            | 0                       | 0                        | 42        | 10.244 %    | 21.608             | 0.00099 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive HFNs    | 312.500 MHz (clkout3_primitive) | 26            | 0                       | 0                        | 42        | 10.298 %    | 27.795             | 0.01424 W    |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/Unassigned_Clock Others   | 312.500 MHz (Unassigned_Clock)  | 0             | 0                       | 0                        | 0         | 11.574 %    | 0                  | 0 W          |               | 
+|         |         | vitis_design_wrapper/vitis_design_i/clkout3_primitive Others  | 312.500 MHz (clkout3_primitive) | 0             | 0                       | 0                        | 0         | 10.234 %    | 5.4455             | 0 W          |               | 
++---------+---------+---------------------------------------------------------------+---------------------------------+---------------+-------------------------+--------------------------+-----------+-------------+--------------------+--------------+---------------+
+
+
+2.6 Block RAM
+-------------
+
++---------+---------+-----------+
+| Supply  | Voltage | Power     | 
++---------+---------+-----------+
+| VCCINT  | 0.8 V   | 0.00483 W | 
+| VCC_RAM | 0.8 V   | 0.00009 W | 
+| Total   |         | 0.005 W   | 
++---------+---------+-----------+
+
+
++--------+-----------+------+-------------+-----------+
+| Type   | Available | Used | Utilization | Power     | 
++--------+-----------+------+-------------+-----------+
+| RAMB18 | 1934      | 2    | 0.10341 %   | 0.00493 W | 
+| RAMB36 | 967       | 0    | 0 %         | 0 W       | 
++--------+-----------+------+-------------+-----------+
+
+
++---------+---------+----------------------------------------------------------------+-------------+-------+--------------------+-----------+-------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+--------------+---------------+---------------+-----------+
+| Ip Type | Ip Name | Name                                                           | Memory Type | BRAMs | Cascade Group Size | Mode      | Toggle Rate | Port A Clock                    | Port A Enable Rate | Port A  Bit Width | Port A Write Mode | Port A   Write Enable | Port A Depth | Port B Clock                    | Port B Enable Rate | Port B  Bit Width | Port B Write Mode | Port B   Write Enable | Port B Depth | VCCINT Power | VCC_RAM Power | User Comments | Power (W) | 
++---------+---------+----------------------------------------------------------------+-------------+-------+--------------------+-----------+-------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+--------------+---------------+---------------+-----------+
+|         |         | vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/clk_out3 |             | 2     | 0                  | RAMB18SDP | 7.574 %     | 312.500 MHz (clkout3_primitive) | 65.9403 %          | 36                | READ_FIRST        | 34.4186 %             | 1024         | 312.500 MHz (clkout3_primitive) | 100 %              | 36                | READ_FIRST        | 34.4186 %             | 1024         | 0.00483 W    | 0.00009 W     |               | 0.00493   | 
++---------+---------+----------------------------------------------------------------+-------------+-------+--------------------+-----------+-------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+---------------------------------+--------------------+-------------------+-------------------+-----------------------+--------------+--------------+---------------+---------------+-----------+
+
+
+2.7 UltraRAM
+------------
+
++---------+---------+-------+
+| Supply  | Voltage | Power | 
++---------+---------+-------+
+| VCCINT  | 0.8 V   | 0 W   | 
+| VCC_RAM | 0.8 V   | 0 W   | 
+| Total   |         | 0 W   | 
++---------+---------+-------+
+
+
++---------+-----------+------+-------------+-------+
+| Type    | Available | Used | Utilization | Power | 
++---------+-----------+------+-------------+-------+
+| URAM288 | 463       | 0    | 0 %         | 0 W   | 
++---------+-----------+------+-------------+-------+
+
+
+2.8 DSP
+-------
+
++--------+---------+-------+
+| Supply | Voltage | Power | 
++--------+---------+-------+
+| VCCINT | 0.8 V   | 0 W   | 
++--------+---------+-------+
+
+
++-------+-----------+------+-------------+-------+
+| Type  | Available | Used | Utilization | Power | 
++-------+-----------+------+-------------+-------+
+| DSP58 | 1968      | 0    | 0 %         | 0 W   | 
++-------+-----------+------+-------------+-------+
+
+
+2.9 I/O
+-------
+
++------------+---------+-----------+
+| Supply     | Voltage | Power     | 
++------------+---------+-----------+
+| VCC_IO     | 0.8 V   | 1.16631 W | 
+| VCCAUX     | 1.5 V   | 0.557 W   | 
+| VCCO 3.3V  | 3.3 V   | 0 W       | 
+| VCCO 2.5V  | 2.5 V   | 0 W       | 
+| VCCO 1.8V  | 1.8 V   | 0 W       | 
+| VCCO 1.5V  | 1.5 V   | 0.00123 W | 
+| VCCO 1.35V | 1.35 V  | 0 W       | 
+| VCCO 1.2V  | 1.2 V   | 0.70385 W | 
+| VCCO 1.1V  | 1.1 V   | 1.22165 W | 
+| VCCO 1.0V  | 1 V     | 0 W       | 
+| VCCINT     | 0.8 V   | 0.04045 W | 
+| Total      |         | 3.69 W    | 
++------------+---------+-----------+
+
+
++-----------------+--------------+
+| Summary Type    | Active Power | 
++-----------------+--------------+
+| Power(On-chip)  | 3.69050 W    | 
+|    Logic        | 0.00106 W    | 
+|    Buffer       | 3.64906 W    | 
+|    Other        | 0.04037 W    | 
+| Power(Off-chip) | 0.24484 W    | 
++-----------------+--------------+
+
+
++-----------+-------+------+-------------+
+| Type      | Avail | Used | Utilization | 
++-----------+-------+------+-------------+
+| Hard MC   | 4     | 0    | 0 %         | 
+| Soft MC   |       | 0    |             | 
+| I/O Count | 692   | 378  | 54.6243 %   | 
+|     XPIO  | 648   | 378  | 58.3333 %   | 
+|     HDIO  | 44    | 0    | 0 %         | 
++-----------+-------+------+-------------+
+
+
++---------+-----------------+
+| Supply  | Number of Banks | 
++---------+-----------------+
+| VCCO10  | 0               | 
+| VCCO11  | 5               | 
+| VCCO12  | 3               | 
+| VCCO135 | 0               | 
+| VCCO15  | 1               | 
+| VCCO18  | 0               | 
+| VCCO25  | 0               | 
+| VCCO33  | 0               | 
++---------+-----------------+
+
+
++---------+---------+----------------------------+------------------+---------------+----------------------------------+------------+-------------+------------+-----------+------------+------------------+--------------+------------------------------------------------------------------------------------------------+-------------+-----------+---------------+--------------+--------------+-----------+-----------------+--------------+---------------------+--------------+--------------+--------------+------------+----------------------+--------------+---------------+--------------------+--------------+----------+-----------+---------------+---------------+----------------------+----------+----------+------------+-----------+-----------+
+| Ip Type | Ip Name | Name                       | Memory Interface | Bank I/O Type | I/O Standard                     | Input Pins | Output Pins | Bidir Pins | IBUF      | Input Term | Output Impedance | Pre-Emphasis | Clock (MHz)                                                                                    | Toggle Rate | Data Rate | Output Enable | Term Disable | IBUF Disable | T Control | Output Load(pF) | XCVR_X2_MODE | Signal Rate (Mtr/s) | VCC_IO Power | VCCAUX Power | VCCINT Power | VCCO Power | External Termination | Offchip Vcco | User Comments | Interconnect Power | Vcco Voltage | BITSLICE | Total IOs | Rx Data Width | Tx Data Width | Xphy Voltage Scaling | Rx Power | Tx Power | Rxtx Power | IOL Power | Power (W) | 
++---------+---------+----------------------------+------------------+---------------+----------------------------------+------------+-------------+------------+-----------+------------+------------------+--------------+------------------------------------------------------------------------------------------------+-------------+-----------+---------------+--------------+--------------+-----------+-----------------+--------------+---------------------+--------------+--------------+--------------+------------+----------------------+--------------+---------------+--------------------+--------------+----------+-----------+---------------+---------------+----------------------+----------+----------+------------+-----------+-----------+
+|         |         | ch0_lpddr4_c0_ca_a<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch0_lpddr4_c0_ca_b<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch0_lpddr4_c0_ck_t_a       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch0_lpddr4_c0_ck_t_b       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch0_lpddr4_c0_cke_a        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c0_cke_b        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c0_cs_a         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c0_cs_b         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | DDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 976.562             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00642 W  | 40                   | 0.00272 W    |               | 0.00021 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01575   | 
+|         |         | ch0_lpddr4_c0_dmi_a<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch0_lpddr4_c0_dmi_b<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch0_lpddr4_c0_dq_a<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch0_lpddr4_c0_dq_b<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch0_lpddr4_c0_dqs_t_a<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch0_lpddr4_c0_dqs_t_b<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch0_lpddr4_c0_reset_n      |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              |                                                                                                | 0 %         | Async     | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 0                   | 0 W          | 0 W          | 0 W          | 0.00272 W  | 40                   | 0.00272 W    |               | 0 W                | 1.1          | NONE     | 1         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00272   | 
+|         |         | ch0_lpddr4_c1_ca_a<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch0_lpddr4_c1_ca_b<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch0_lpddr4_c1_ck_t_a       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch0_lpddr4_c1_ck_t_b       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch0_lpddr4_c1_cke_a        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c1_cke_b        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c1_cs_a         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch0_lpddr4_c1_cs_b         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 25 %        | DDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 976.562             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00642 W  | 40                   | 0.00272 W    |               | 0.00021 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01575   | 
+|         |         | ch0_lpddr4_c1_dmi_a<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch0_lpddr4_c1_dmi_b<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch0_lpddr4_c1_dq_a<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch0_lpddr4_c1_dq_b<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch0_lpddr4_c1_dqs_t_a<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch0_lpddr4_c1_dqs_t_b<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch0_lpddr4_c1_reset_n      |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              |                                                                                                | 0 %         | Async     | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 0                   | 0 W          | 0 W          | 0 W          | 0.00272 W  | 40                   | 0.00272 W    |               | 0 W                | 1.1          | NONE     | 1         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00272   | 
+|         |         | ch1_lpddr4_c0_ca_a<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch1_lpddr4_c0_ca_b<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch1_lpddr4_c0_ck_t_a       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch1_lpddr4_c0_ck_t_b       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch1_lpddr4_c0_cke_a        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c0_cke_b        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c0_cs_a         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c0_cs_b         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | DDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 976.562             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00642 W  | 40                   | 0.00272 W    |               | 0.00021 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01575   | 
+|         |         | ch1_lpddr4_c0_dmi_a<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch1_lpddr4_c0_dmi_b<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch1_lpddr4_c0_dq_a<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch1_lpddr4_c0_dq_b<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch1_lpddr4_c0_dqs_t_a<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch1_lpddr4_c0_dqs_t_b<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch1_lpddr4_c0_reset_n      |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              |                                                                                                | 0 %         | Async     | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 0                   | 0 W          | 0 W          | 0 W          | 0.00272 W  | 40                   | 0.00272 W    |               | 0 W                | 1.1          | NONE     | 1         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00272   | 
+|         |         | ch1_lpddr4_c1_ca_a<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch1_lpddr4_c1_ca_b<0:5>    |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 6           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01490 W    | 0 W          | 0.00064 W    | 0.02742 W  | 40                   | 0.01634 W    |               | 0.00064 W          | 1.1          | YES      | 6         | 0             | 0             | 0.72727              | 0        | 0.01126  | 0          | 0.01422   | 0.04296   | 
+|         |         | ch1_lpddr4_c1_ck_t_a       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch1_lpddr4_c1_ck_t_b       |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00914 W  | 40                   | 0.00545 W    |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01847   | 
+|         |         | ch1_lpddr4_c1_cke_a        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c1_cke_b        |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c1_cs_a         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.00900 W    | 0 W          | 0.00011 W    | 0.00457 W  | 40                   | 0.00272 W    |               | 0.00011 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01368   | 
+|         |         | ch1_lpddr4_c1_cs_b         |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 25 %        | DDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 976.562             | 0.00912 W    | 0 W          | 0.00021 W    | 0.00642 W  | 40                   | 0.00272 W    |               | 0.00021 W          | 1.1          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00887  | 0          | 0.00889   | 0.01575   | 
+|         |         | ch1_lpddr4_c1_dmi_a<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch1_lpddr4_c1_dmi_b<0:1>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.01074 W    | 0.00495 W    | 0.00021 W    | 0.01002 W  | 40                   | -0.00272 W   |               | 0.00021 W          | 1.1          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02592   | 
+|         |         | ch1_lpddr4_c1_dq_a<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch1_lpddr4_c1_dq_b<0:15>   |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 0           | 16         | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.281             | 0.04680 W    | 0.03961 W    | 0.00172 W    | 0.08012 W  | 40                   | -0.02178 W   |               | 0.00172 W          | 1.1          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01890    | 0.04051   | 0.16824   | 
+|         |         | ch1_lpddr4_c1_dqs_t_a<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch1_lpddr4_c1_dqs_t_b<0:1> |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 2          | High Perf | RTT_40     | RDRV_40          |              | 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 12.5 %      | DDR       | 50 %          | 50 %         | 100 %        | 0         | 0               | NO           | 488.281             | 0.01018 W    | 0 W          | 0.00043 W    | 0.01459 W  | 40                   | 0 W          |               | 0.00043 W          | 1.1          | YES      | 4         | 0             | 0             | 0.72727              | 0        | 0        | 0.01234    | 0.00995   | 0.02520   | 
+|         |         | ch1_lpddr4_c1_reset_n      |                  | XP            | LVSTL 1.1V (50% VOH)             | 0          | 1           | 0          | High Perf |            | RDRV_40          |              |                                                                                                | 0 %         | Async     | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 0                   | 0 W          | 0 W          | 0 W          | 0.00272 W  | 40                   | 0.00272 W    |               | 0 W                | 1.1          | NONE     | 1         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00272   | 
+|         |         | ddr4_dimm1_act_n           |                  | XP            | SSTL 1.2V                        | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00740 W    | 0 W          | 0.00011 W    | 0.00545 W  | 40                   | 0.00225 W    |               | 0.00011 W          | 1.2          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00727  | 0          | 0.00728   | 0.01296   | 
+|         |         | ddr4_dimm1_adr<0:16>       |                  | XP            | SSTL 1.2V                        | 0          | 17          | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.03605 W    | 0 W          | 0.00183 W    | 0.09270 W  | 40                   | 0.03825 W    |               | 0.00183 W          | 1.2          | YES      | 17        | 0             | 0             | 0.72727              | 0        | 0.01353  | 0          | 0.03406   | 0.13057   | 
+|         |         | ddr4_dimm1_ba<0:1>         |                  | XP            | SSTL 1.2V                        | 0          | 2           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00839 W    | 0 W          | 0.00021 W    | 0.01091 W  | 40                   | 0.0045 W     |               | 0.00021 W          | 1.2          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00766  | 0          | 0.00815   | 0.01951   | 
+|         |         | ddr4_dimm1_bg<0:1>         |                  | XP            | SSTL 1.2V                        | 0          | 2           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00839 W    | 0 W          | 0.00021 W    | 0.01091 W  | 40                   | 0.0045 W     |               | 0.00021 W          | 1.2          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00766  | 0          | 0.00815   | 0.01951   | 
+|         |         | ddr4_dimm1_ck_t            |                  | XP            | Diff SSTL 1.2V (pair)            | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00751 W    | 0 W          | 0.00021 W    | 0.01079 W  | 40                   | 0.0045 W     |               | 0.00021 W          | 1.2          | YES      | 2         | 0             | 0             | 0.72727              | 0        | 0.00727  | 0          | 0.00728   | 0.01852   | 
+|         |         | ddr4_dimm1_cke             |                  | XP            | SSTL 1.2V                        | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00740 W    | 0 W          | 0.00011 W    | 0.00545 W  | 40                   | 0.00225 W    |               | 0.00011 W          | 1.2          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00727  | 0          | 0.00728   | 0.01296   | 
+|         |         | ddr4_dimm1_cs_n            |                  | XP            | SSTL 1.2V                        | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00740 W    | 0 W          | 0.00011 W    | 0.00545 W  | 40                   | 0.00225 W    |               | 0.00011 W          | 1.2          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00727  | 0          | 0.00728   | 0.01296   | 
+|         |         | ddr4_dimm1_dm_n<0:7>       |                  | XP            | POD 1.2V                         | 0          | 0           | 8          | High Perf | RTT_40     | RDRV_40          | No           | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0])   | 15.2588 %   | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.02292 W    | 0.01980 W    | 0.00086 W    | 0.04776 W  | 40                   | 0.01296 W    |               | 0.00086 W          | 1.2          | YES      | 8         | 0             | 0             | 0.72727              | 0        | 0        | 0.01241    | 0.01980   | 0.09135   | 
+|         |         | ddr4_dimm1_dq<0:63>        |                  | XP            | POD 1.2V                         | 0          | 0           | 64         | High Perf | RTT_40     | RDRV_40          | No           | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2])   | 15.2588 %   | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.15136 W    | 0.15842 W    | 0.00687 W    | 0.38211 W  | 40                   | 0.10368 W    |               | 0.00688 W          | 1.2          | YES      | 64        | 0             | 0             | 0.72727              | 0        | 0        | 0.03392    | 0.12635   | 0.69876   | 
+|         |         | ddr4_dimm1_dqs_t<0:7>      |                  | XP            | Diff POD 1.2V (pair)             | 0          | 0           | 8          | High Perf | RTT_40     | RDRV_40          | No           | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0])   | 15.2588 %   | DDR       | 50 %          | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.02340 W    | 0.01980 W    | 0.00172 W    | 0.12668 W  | 40                   | 0.036 W      |               | 0.00172 W          | 1.2          | YES      | 16        | 0             | 0             | 0.72727              | 0        | 0        | 0.01241    | 0.01980   | 0.17160   | 
+|         |         | ddr4_dimm1_odt             |                  | XP            | SSTL 1.2V                        | 0          | 1           | 0          | High Perf |            | RDRV_40          |              | 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 30.5176 %   | SDR       | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 488.282             | 0.00740 W    | 0 W          | 0.00011 W    | 0.00545 W  | 40                   | 0.00225 W    |               | 0.00011 W          | 1.2          | YES      | 1         | 0             | 0             | 0.72727              | 0        | 0.00727  | 0          | 0.00728   | 0.01296   | 
+|         |         | ddr4_dimm1_reset_n         |                  | XP            | LVCMOS 1.2V 8mA                  | 0          | 1           | 0          | High Perf |            |                  |              |                                                                                                | 0 %         | Async     | 100 %         | 0 %          | 0 %          | 0         | 0               | NO           | 0                   | 0 W          | 0 W          | 0 W          | 0.00019 W  | None                 | 0 W          |               | 0 W                | 1.2          | NONE     | 1         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00019   | 
+|         |         | ddr4_dimm1_sma_clk_clk_p   |                  | XP            | LVDS 1.5V (pair)                 | 1          | 0           | 0          | Low Power |            |                  |              | 200.000 MHz (ddr4_dimm1_sma_clk_clk_p)                                                         | 200 %       | Clock     |               | 0 %          | 0 %          | 0         |                 | NO           | 400                 | 0.00032 W    | 0.00252 W    | 0.00018 W    | 0.00123 W  | 100                  | -0.00123 W   |               | 0.00009 W          | 1.5          | NONE     | 2         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0.00424   | 
+|         |         | lpddr4_sma_clk1_clk_p      |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 0          | Low Power |            |                  |              | 200.321 MHz (lpddr4_sma_clk1_clk_p_0)                                                          | 200 %       | Clock     |               | 0 %          | 0 %          | 0         |                 | NO           | 400.642             | 0 W          | 0 W          | 0 W          | 0 W        | 40                   | 0 W          |               | 0 W                | 1.1          | NONE     | 0         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0         | 
+|         |         | lpddr4_sma_clk2_clk_p      |                  | XP            | Diff LVSTL 1.1V (50% VOH) (pair) | 0          | 0           | 0          | Low Power |            |                  |              | 200.321 MHz (lpddr4_sma_clk2_clk_p_0)                                                          | 200 %       | Clock     |               | 0 %          | 0 %          | 0         |                 | NO           | 400.642             | 0 W          | 0 W          | 0 W          | 0 W        | 40                   | 0 W          |               | 0 W                | 1.1          | NONE     | 0         | 0             | 0             | 0                    | 0        | 0        | 0          | 0         | 0         | 
++---------+---------+----------------------------+------------------+---------------+----------------------------------+------------+-------------+------------+-----------+------------+------------------+--------------+------------------------------------------------------------------------------------------------+-------------+-----------+---------------+--------------+--------------+-----------+-----------------+--------------+---------------------+--------------+--------------+--------------+------------+----------------------+--------------+---------------+--------------------+--------------+----------+-----------+---------------+---------------+----------------------+----------+----------+------------+-----------+-----------+
+
+
+2.10 GTY
+--------
+
++--------------+---------+-------+
+| Supply       | Voltage | Power | 
++--------------+---------+-------+
+| VCCINT       | 0.8 V   | 0 W   | 
+| VGTY_AVCCAUX | 1.5 V   | 0 W   | 
+| VGTY_AVCC    | 0.88 V  | 0 W   | 
+| VGTY_AVTT    | 1.2 V   | 0 W   | 
+| Total        |         | 0 W   | 
++--------------+---------+-------+
+
+
++--------------+-----------+------+-------------+-------+
+| Type         | Available | Used | Utilization | Power | 
++--------------+-----------+------+-------------+-------+
+| GTY Channels | 44        | 0    | 0 %         | 0 W   | 
+| PCIe Blocks  | 4         | 0    | 0 %         |       | 
+| CPM Blocks   | 1         | 0    | 0 %         |       | 
+| MRMAC Blocks | 4         | 0    | 0 %         |       | 
++--------------+-----------+------+-------------+-------+
+
+
+2.11 Hard IP Blocks
+-------------------
+
++----------------+-----------+------+-------------+-------+
+| Type           | Available | Used | Utilization | Power | 
++----------------+-----------+------+-------------+-------+
+| CPM            | 1         | 0    | 0 %         | 0 W   | 
+| PCIE           | 4         | 0    | 0 %         | 0 W   | 
+| MRMAC          | 4         | 0    | 0 %         | 0 W   | 
++----------------+-----------+------+-------------+-------+
+
+
+2.12 CPM
+--------
+
++--------+---------+-------+
+| Supply | Voltage | Power | 
++--------+---------+-------+
+| VCCINT | 0.8 V   | 0 W   | 
+| VCCAUX | 1.5 V   | 0 W   | 
+| Total  |         | 0 W   | 
++--------+---------+-------+
+
+
++------------+-----------+------+-------------+-------+
+| Type       | Available | Used | Utilization | Power | 
++------------+-----------+------+-------------+-------+
+| CPM Blocks | 1         | 0    | 0 %         | 0 W   | 
++------------+-----------+------+-------------+-------+
+
+
++------+------+------+-------+-------+-------+-------------+
+| Name | PCIe | Mode | Speed | Width | Power | Xpipe Power | 
++------+------+------+-------+-------+-------+-------------+
+|      | A0   |      |       |       | 0 W   |             | 
+|      | A1   |      |       |       |       |             | 
++------+------+------+-------+-------+-------+-------------+
+
+
+2.13 PL PCIe4
+-------------
+
++--------+---------+-------+
+| Supply | Voltage | Power | 
++--------+---------+-------+
+| VCCINT | 0.8 V   | 0 W   | 
++--------+---------+-------+
+
+
++-------------+-----------+------+-------------+-------+
+| Type        | Available | Used | Utilization | Power | 
++-------------+-----------+------+-------------+-------+
+| PCIE Blocks | 4         | 0    | 0 %         | 0 W   | 
++-------------+-----------+------+-------------+-------+
+
+
+2.14 MRMAC
+----------
+
++--------+---------+-------+
+| Supply | Voltage | Power | 
++--------+---------+-------+
+| VCCINT | 0.8 V   | 0 W   | 
++--------+---------+-------+
+
+
++--------------+-----------+------+-------------+-------+
+| Type         | Available | Used | Utilization | Power | 
++--------------+-----------+------+-------------+-------+
+| MRMAC Blocks | 4         | 0    | 0 %         | 0 W   | 
++--------------+-----------+------+-------------+-------+
+
+
+
+3. Power Design
+---------------
+
+3.1 Part
+--------
+
++-----------------+-----------------------+
+| Family          | Versal AI Core Series | 
+| Device Grade    | XC                    | 
+| Device          | XCVC1902              | 
+| Package         | VSVA2197              | 
+| Speed           | 2                     | 
+| Static Power    | S                     | 
+| Temperature     | E                     | 
+| VCCINT Voltage  | MP                    | 
+| Process         | Typical               | 
++-----------------+-----------------------+
+
+
+3.2 Power Summary
+-----------------
+
++---------+------------+
+| Total   | 42.9272 W  | 
+| Static  | 13.56943 W | 
+| Dynamic | 29.3578 W  | 
++---------+------------+
+
+
+3.3 Power Rail Characteristics
+------------------------------
+
++---------------------------------------+-----------------+---------+--------------+--------------+-------------+-------------+--------------+------------+--------------+-----------------------+
+| Supply                                | Internal Supply | Voltage | Min  Voltage | Max  Voltage | Step Load % | Static  (A) | Dynamic  (A) | Total  (A) | Powerup  (A) | Power Rail Group      | 
++---------------------------------------+-----------------+---------+--------------+--------------+-------------+-------------+--------------+------------+--------------+-----------------------+
+| Platform Management Controller (PMC)  |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCC_PMC                              | VCCPMC          | 0.8     | 0.775        | 0.825        | 33 %        | 0.04464     | 0.35067      | 0.39531    |              | 0V80_PMC (Digital)    | 
+|  VCCO_503                             | VCCOFIO         | 1.8     | 1.71         | 1.89         | 100 %       | 0.00094     | 0.00405      | 0.00498    |              | 1V8_PMC_IO (Digital)  | 
+|  VCCO_500                             | VCCOPMIO0       | 1.8     | 1.71         | 1.89         | 100 %       | 0           | 0            | 0          |              | 1V8_PMC_IO (Digital)  | 
+|  VCCO_501                             | VCCOPMIO1       | 1.8     | 1.71         | 1.89         | 100 %       | 0           | 0            | 0          |              | 1V8_PMC_IO (Digital)  | 
+|  VCCAUX_PMC                           | VCCAUXPMC       | 1.5     | 1.455        | 1.545        | 100 %       | 0.00201     | 0.06769      | 0.06971    |              | 1V5 (Digital)         | 
+|  VCCAUX_SMON                          | VCCAUXSMON      | 1.5     | 1.455        | 1.545        | 100 %       | 0.00275     | 0            | 0.00275    |              | 1V5 (Digital)         | 
+|  VCC_FUSE                             | VCCFUSE         | 1.8     | 1.745        | 1.854        |             | 0           | 0            | 0          |              |                       | 
+| Low Power Domain (LPD)                |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCC_PSLP                             | VCCPSLP         | 0.8     | 0.775        | 0.825        | 33 %        | 0.09085     | 0.15317      | 0.24402    |              | 0V80_PSLP (Digital)   | 
+|  VCCO_502                             | VCCOPMIO2       | 1.8     | 1.71         | 1.89         | 100 %       | 0.00094     | 0.01386      | 0.01480    |              | 1V8_PS_IO (Digital)   | 
+| Full Power Domain (FPD)               |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCC_PSFP                             | VCCPSFP         | 0.8     | 0.775        | 0.825        | 33 %        | 0.15272     | 0.79008      | 0.94279    |              | 0V80_PSFP (Digital)   | 
+| System Auxiliary                      |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCCAUX                               | VCCAUX          | 1.5     | 1.455        | 1.545        | 33 %        | 1.92617     | 0.76041      | 2.68658    |              | 1V5_VCCAUX (Digital)  | 
+| System Core                           |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCC_SOC                              | VCCSOC          | 0.8     | 0.775        | 0.825        | 33 %        | 1.32639     | 2.24505      | 3.57145    |              | 0V80_SOC_IO (Digital) | 
+|  VCC_IO                               | VCCINTIO        | 0.8     | 0.775        | 0.825        | 33 %        | 0.18701     | 1.67351      | 1.86053    |              | 0V80_SOC_IO (Digital) | 
+| Programmable Logic Core               |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCCINT                               | VCCINT          | 0.8     | 0.775        | 0.825        | 25 %        | 12.4681     | 27.34966     | 39.81776   |              | 0V80_VCCINT (Digital) | 
+|  VCC_RAM                              | VCCRAM          | 0.8     | 0.775        | 0.825        | 33 %        | 0.07521     | 0.03040      | 0.10561    |              | 0V80_RAM (Digital)    | 
+| Programmable Logic IO                 |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCCO 1.5V                            | VCCO15          | 1.5     | 1.425        | 1.575        | 100 %       | 0.00702     | 0.00082      | 0.00784    |              | 1V5_VCCO (Digital)    | 
+|  VCCO 1.35V                           | VCCO135         | 1.35    | 1.283        | 1.417        | 100 %       | 0           | 0            | 0          |              | 1V35_VCCO (Digital)   | 
+|  VCCO 1.2V                            | VCCO12          | 1.2     | 1.14         | 1.26         | 100 %       | 0.01697     | 0.58654      | 0.60351    |              | 1V2 (Digital)         | 
+|  VCCO 1.1V                            | VCCO11          | 1.1     | 1.045        | 1.155        | 100 %       | 0.02631     | 1.11059      | 1.13690    |              | 1V1 (Digital)         | 
+|  VCCO 1.0V                            | VCCO10          | 1       | 0.95         | 1.05         | 100 %       | 0           | 0            | 0          |              | 1V0_VCCO (Digital)    | 
+|  VCCO 3.3V                            | VCCO33          | 3.3     | 3.135        | 3.465        | 100 %       | 0           | 0            | 0          |              | 3V3_VCCO (Digital)    | 
+|  VCCO 2.5V                            | VCCO25          | 2.5     | 2.375        | 2.625        | 100 %       | 0           | 0            | 0          |              | 2V5_VCCO (Digital)    | 
+|  VCCO 1.8V                            | VCCO18          | 1.8     | 1.71         | 1.89         | 100 %       | 0           | 0            | 0          |              | 1V8_VCCO (Digital)    | 
+| Programmable Logic GTY                |                 |         |              |              |             |             |              |            |              |                       | 
+|  VGTY_AVCC                            | MGTYAVCC        | 0.88    | 0.854        | 0.906        |             | 0           | 0            | 0          |              | 0V88 (Analog)         | 
+|  VGTY_AVTT                            | MGTYAVTT        | 1.2     | 1.164        | 1.236        |             | 0           | 0            | 0          |              | 1V2 (Analog)          | 
+|  VGTY_AVCCAUX                         | MGTYVCCAUX      | 1.5     | 1.455        | 1.545        |             | 0           | 0            | 0          |              | 1V5 (Analog)          | 
+| Battery Power Domain (BPD)            |                 |         |              |              |             |             |              |            |              |                       | 
+|  VCC_BATT                             | VCCBATT         | 1.5     | 1.2          | 1.5          |             | 0           | 0            | 0          |              |                       | 
++---------------------------------------+-----------------+---------+--------------+--------------+-------------+-------------+--------------+------------+--------------+-----------------------+
+
+
+3.4 Power Delivery Design
+-------------------------
+
++-----------------------+----------------+------------------------------+------------------------+---------+------------+-------+------------+--------------+------------+-------------------------------+-----------------------+------------+------------+-----------+-----------+-----------+------------+
+| Power Rail Group      | Schematic Name | Combined Rails               | Power Domain/ Sequence | Voltage | AC Ripple* | DC*   | Dynamic    | Step Current | Total      | Power Delivery Supply Current | Power Delivery Margin | 330uF-1210 | 100uF-0805 | 47uF-0603 | 22uF-0603 | 10uF-0402 | 1.0uF-0201 | 
++-----------------------+----------------+------------------------------+------------------------+---------+------------+-------+------------+--------------+------------+-------------------------------+-----------------------+------------+------------+-----------+-----------+-----------+------------+
+| 1V8_PMC_IO (Digital)  |                | VCCO_503, VCCO_500, VCCO_501 | PMC/1                  | 1.8 V   | +/-4%      | +/-1% | 0.00405 A  | 0.00405 A    | 0.00498 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 0V80_PMC (Digital)    |                | VCC_PMC                      | PMC/2                  | 0.8 V   | +/-17mV    | +/-1% | 0.35067 A  | 0.11572 A    | 0.39531 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 1V5 (Digital)         |                | VCCAUX_PMC, VCCAUX_SMON      | PMC/3                  | 1.5 V   | +/-2%      | +/-1% | 0.06769 A  | 0.06769 A    | 0.07246 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 1V2 (Digital)         |                | VCCO 1.2V                    | SYSTEM/1               | 1.2 V   | +/-4%      | +/-1% | 0.58654 A  | 0.58654 A    | 0.60351 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 1V1 (Digital)         |                | VCCO 1.1V                    | SYSTEM/1               | 1.1 V   | +/-4%      | +/-1% | 1.11059 A  | 1.11059 A    | 1.13690 A  |                               |                       |            |            | 1         |           | 2         |            | 
+| 0V80_SOC_IO (Digital) |                | VCC_SOC, VCC_IO              | SYSTEM/2               | 0.8 V   | +/-17mV    | +/-1% | 3.91857 A  | 1.29313 A    | 5.43197 A  |                               |                       | 1          | 1          |           |           |           |            | 
+| 1V5_VCCAUX (Digital)  |                | VCCAUX                       | SYSTEM/3               | 1.5 V   | +/-2%      | +/-1% | 0.76041 A  | 0.25093 A    | 2.68658 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 1V8_PS_IO (Digital)   |                | VCCO_502                     | LPD/1                  | 1.8 V   | +/-4%      | +/-1% | 0.01386 A  | 0.01386 A    | 0.01480 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 0V80_PSLP (Digital)   |                | VCC_PSLP                     | LPD/2                  | 0.8 V   | +/-17mV    | +/-1% | 0.15317 A  | 0.05055 A    | 0.24402 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 0V80_PSFP (Digital)   |                | VCC_PSFP                     | FPD/1                  | 0.8 V   | +/-17mV    | +/-1% | 0.79008 A  | 0.26073 A    | 0.94279 A  |                               |                       |            |            | 1         |           | 2         |            | 
+| 1V5_VCCO (Digital)    |                | VCCO 1.5V                    | PL/1                   | 1.5 V   | +/-4%      | +/-1% | 0.00082 A  | 0.00082 A    | 0.00784 A  |                               |                       |            |            | 1         |           | 1         |            | 
+| 0V80_VCCINT (Digital) |                | VCCINT                       | PL/2                   | 0.8 V   | +/-17mV    | +/-1% | 27.34966 A | 6.83741 A    | 39.81776 A |                               |                       | 2          | 3          | 1         |           |           |            | 
+| 0V80_RAM (Digital)    |                | VCC_RAM                      | PL/3                   | 0.8 V   | +/-17mV    | +/-1% | 0.03040 A  | 0.01003 A    | 0.10561 A  |                               |                       |            |            |           |           |           |            | 
+| 0V88 (Analog)         |                | VGTY_AVCC                    | PL/4                   | 0.88 V  | +/-2%*     | +/-1% | 0 A        |              | 0 A        |                               |                       |            |            |           |           |           |            | 
+| 1V5 (Analog)          |                | VGTY_AVCCAUX                 | PL/5                   | 1.5 V   | +/-2%*     | +/-1% | 0 A        |              | 0 A        |                               |                       |            |            |           |           |           |            | 
+| 1V2 (Analog)          |                | VGTY_AVTT                    | PL/6                   | 1.2 V   | +/-2%*     | +/-1% | 0 A        |              | 0 A        |                               |                       |            |            |           |           |           |            | 
++-----------------------+----------------+------------------------------+------------------------+---------+------------+-------+------------+--------------+------------+-------------------------------+-----------------------+------------+------------+-----------+-----------+-----------+------------+
+
+
+
+4. Power Management
+-------------------
+
+4.1 Summary of Savings
+----------------------
+
++------------------------+-----------+-------------+-------------+
+| Mode                   | Power (W) | Savings (W) | Savings (%) | 
++------------------------+-----------+-------------+-------------+
+| Current Design         | 3.80676   |             |             | 
+| Only Clock Gating      | 3.80676   | 0           | 0 %         | 
+| Only Frequency Scaling | 0         | 3.80676     | 100 %       | 
+| Only Logic Gating      | 3.80676   | 0           | 0 %         | 
++------------------------+-----------+-------------+-------------+
+
+
+4.2 Clock Domain Power
+----------------------
+
++------------------------------------------------------------------------------------------------+-----------------+--------------+-----------------------------+------------------+---------------------+-----------------+------------------+
+| Clock                                                                                          | Frequency (MHz) | Clock Gating | Min Frequency(Freq Scaling) | % of Logic gated | Clock Net Power (W) | Logic Power (W) | Domain Power (W) | 
++------------------------------------------------------------------------------------------------+-----------------+--------------+-----------------------------+------------------+---------------------+-----------------+------------------+
+| 100.000 MHz (clk_pl_0)                                                                         | 100             | 0            | 0                           | 0 %              | 0.00001             | 0               | 0.00001          | 
+| 200.000 MHz (ddr4_dimm1_sma_clk_clk_p)                                                         | 200             | 0            | 0                           | 0 %              | 0.00007             | 0.00424         | 0.00431          | 
+| 200.320 MHz (lpddr4_sma_clk1_clk_p)                                                            | 200.32          | 0            | 0                           | 0 %              | 0.00004             | 0               | 0.00004          | 
+| 200.320 MHz (lpddr4_sma_clk2_clk_p)                                                            | 200.32          | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 800.000 MHz (clock_autogen_0)                                                                  | 800             | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (clock_autogen_1)                                                                  | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 312.500 MHz (Unassigned_Clock)                                                                 | 312.5           | 0            | 0                           | 0 %              | 0                   | 0.00013         | 0.00013          | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 1953.125        | 0            | 0                           | 0 %              | 0.00194             | 0.61838         | 0.62032          | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 1953.125        | 0            | 0                           | 0 %              | 0.00194             | 0.61838         | 0.62032          | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 1953.125        | 0            | 0                           | 0 %              | 0.00129             | 0.39902         | 0.40031          | 
+| 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 1953.124        | 0            | 0                           | 0 %              | 0.00065             | 0.21936         | 0.22001          | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 1953.125        | 0            | 0                           | 0 %              | 0.00065             | 0.17966         | 0.18030          | 
+| 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 1953.124        | 0            | 0                           | 0 %              | 0.00129             | 0.43872         | 0.44001          | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 1600            | 0            | 0                           | 0 %              | 0.00071             | 0.23994         | 0.24064          | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0])   | 1600            | 0            | 0                           | 0 %              | 0.00053             | 0.26295         | 0.26348          | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2])   | 1600            | 0            | 0                           | 0 %              | 0.00159             | 0.69876         | 0.70035          | 
+| 200.321 MHz (lpddr4_sma_clk1_clk_p_0)                                                          | 200.321         | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 200.321 MHz (lpddr4_sma_clk2_clk_p_0)                                                          | 200.321         | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 100.000 MHz (clkfbout_primitive)                                                               | 100             | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 104.170 MHz (clkout1_primitive)                                                                | 104.17          | 0            | 0                           | 0 %              | 0.01387             | 0.00802         | 0.02189          | 
+| 312.500 MHz (clkout3_primitive)                                                                | 312.5           | 0            | 0                           | 0 %              | 0.04052             | 0.05410         | 0.09463          | 
+| 3200.000 MHz (pll_clktoxphy[0])                                                                | 3200            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clktoxphy[0]_1)                                                              | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clktoxphy[0]_2)                                                              | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 800.000 MHz (bank1_clkout0)                                                                    | 800             | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 800.000 MHz (bank1_xpll0_fifo_rd_clk)                                                          | 800             | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 800.000 MHz (mc_clk_xpll)                                                                      | 800             | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3200.000 MHz (pll_clk_xpll)                                                                    | 3200            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (bank1_clkout0_1)                                                                  | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (bank1_xpll0_fifo_rd_clk_1)                                                        | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (mc_clk_xpll_1)                                                                    | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clk_xpll_1)                                                                  | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (bank1_clkout0_2)                                                                  | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (bank1_xpll0_fifo_rd_clk_2)                                                        | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 976.600 MHz (mc_clk_xpll_2)                                                                    | 976.6           | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clk_xpll_2)                                                                  | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3200.000 MHz (pll_clktoxphy[2])                                                                | 3200            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clktoxphy[2]_1)                                                              | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
+| 3906.000 MHz (pll_clktoxphy[2]_2)                                                              | 3906            | 0            | 0                           | 0 %              | 0                   | 0               | 0                | 
++------------------------------------------------------------------------------------------------+-----------------+--------------+-----------------------------+------------------+---------------------+-----------------+------------------+
+
+
+4.3 Potential Savings
+---------------------
+
++------------------------------------------------------------------------------------------------+------------------+-----------------------+------------------+
+| Clock                                                                                          | Clock Gating (W) | Frequency Scaling (W) | Logic Gating (W) | 
++------------------------------------------------------------------------------------------------+------------------+-----------------------+------------------+
+| 100.000 MHz (clk_pl_0)                                                                         | 0                | 0.00001               | 0                | 
+| 200.000 MHz (ddr4_dimm1_sma_clk_clk_p)                                                         | 0                | 0.00431               | 0                | 
+| 200.320 MHz (lpddr4_sma_clk1_clk_p)                                                            | 0                | 0.00004               | 0                | 
+| 200.320 MHz (lpddr4_sma_clk2_clk_p)                                                            | 0                | 0                     | 0                | 
+| 800.000 MHz (clock_autogen_0)                                                                  | 0                | 0                     | 0                | 
+| 976.600 MHz (clock_autogen_1)                                                                  | 0                | 0                     | 0                | 
+| 312.500 MHz (Unassigned_Clock)                                                                 | 0                | 0.00013               | 0                | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 0                | 0.62032               | 0                | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]) | 0                | 0.62032               | 0                | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 0                | 0.40031               | 0                | 
+| 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 0                | 0.22001               | 0                | 
+| 1953.125 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]) | 0                | 0.18030               | 0                | 
+| 1953.124 MHz (vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)     | 0                | 0.44001               | 0                | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll)       | 0                | 0.24064               | 0                | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0])   | 0                | 0.26348               | 0                | 
+| 1600.000 MHz (vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2])   | 0                | 0.70035               | 0                | 
+| 200.321 MHz (lpddr4_sma_clk1_clk_p_0)                                                          | 0                | 0                     | 0                | 
+| 200.321 MHz (lpddr4_sma_clk2_clk_p_0)                                                          | 0                | 0                     | 0                | 
+| 100.000 MHz (clkfbout_primitive)                                                               | 0                | 0                     | 0                | 
+| 104.170 MHz (clkout1_primitive)                                                                | 0                | 0.02189               | 0                | 
+| 312.500 MHz (clkout3_primitive)                                                                | 0                | 0.09463               | 0                | 
+| 3200.000 MHz (pll_clktoxphy[0])                                                                | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clktoxphy[0]_1)                                                              | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clktoxphy[0]_2)                                                              | 0                | 0                     | 0                | 
+| 800.000 MHz (bank1_clkout0)                                                                    | 0                | 0                     | 0                | 
+| 800.000 MHz (bank1_xpll0_fifo_rd_clk)                                                          | 0                | 0                     | 0                | 
+| 800.000 MHz (mc_clk_xpll)                                                                      | 0                | 0                     | 0                | 
+| 3200.000 MHz (pll_clk_xpll)                                                                    | 0                | 0                     | 0                | 
+| 976.600 MHz (bank1_clkout0_1)                                                                  | 0                | 0                     | 0                | 
+| 976.600 MHz (bank1_xpll0_fifo_rd_clk_1)                                                        | 0                | 0                     | 0                | 
+| 976.600 MHz (mc_clk_xpll_1)                                                                    | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clk_xpll_1)                                                                  | 0                | 0                     | 0                | 
+| 976.600 MHz (bank1_clkout0_2)                                                                  | 0                | 0                     | 0                | 
+| 976.600 MHz (bank1_xpll0_fifo_rd_clk_2)                                                        | 0                | 0                     | 0                | 
+| 976.600 MHz (mc_clk_xpll_2)                                                                    | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clk_xpll_2)                                                                  | 0                | 0                     | 0                | 
+| 3200.000 MHz (pll_clktoxphy[2])                                                                | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clktoxphy[2]_1)                                                              | 0                | 0                     | 0                | 
+| 3906.000 MHz (pll_clktoxphy[2]_2)                                                              | 0                | 0                     | 0                | 
++------------------------------------------------------------------------------------------------+------------------+-----------------------+------------------+

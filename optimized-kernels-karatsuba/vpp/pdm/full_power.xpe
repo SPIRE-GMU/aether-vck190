@@ -1,0 +1,758 @@
+<?xml version="1.0"?>
+<POWERDATA author="Vivado Power Analysis" dataVersion="2023.2" design="vitis_design_wrapper" designState="routed" date="Wed Sep 30 16:30:35 2026" pwrOpt="BRAMPwropt" activityLevel="vectorless">
+	<ENVIRONMENT>
+		<DEVICE part="xcvc1902" grade="extended" staticScreen="STANDARD" package="vsva2197" speed="-2MP" process="typical" vid="No">
+		</DEVICE>
+		<VOLTAGESOURCES>
+			<SOURCE name="Vccint" voltage="0.800000" icc="30.475988" iccq="12.486571" power="34.370049">
+			</SOURCE>
+			<SOURCE name="Vccaux" voltage="1.500000" icc="0.749849" iccq="1.927181" power="4.015545">
+			</SOURCE>
+			<SOURCE name="VCC_IO" voltage="0.800000" icc="2.508439" iccq="0.187012" power="2.156361">
+			</SOURCE>
+			<SOURCE name="VCC_SOC" voltage="0.800000" icc="2.112834" iccq="1.326394" power="2.751382">
+			</SOURCE>
+			<SOURCE name="VCCRAM" voltage="0.800000" icc="0.058603" iccq="0.075305" power="0.107127">
+			</SOURCE>
+			<SOURCE name="Vcco15" voltage="1.500000" icc="0.000817" iccq="0.007019" power="0.011753">
+			</SOURCE>
+			<SOURCE name="Vcco12" voltage="1.200000" icc="0.435187" iccq="0.016966" power="0.542584">
+			</SOURCE>
+			<SOURCE name="Vcco11" voltage="1.100000" icc="0.962787" iccq="0.031575" power="1.093798">
+			</SOURCE>
+			<SOURCE name="VCC_PSFP" voltage="0.800000" icc="0.838516" iccq="0.152716" power="0.792986">
+			</SOURCE>
+			<SOURCE name="VCC_PSLP" voltage="0.800000" icc="0.216644" iccq="0.091741" power="0.246708">
+			</SOURCE>
+			<SOURCE name="VCCO_502" voltage="1.800000" icc="0.030972" iccq="0.000939" power="0.057439">
+			</SOURCE>
+			<SOURCE name="VCC_PMC" voltage="0.800000" icc="0.264892" iccq="0.044642" power="0.247627">
+			</SOURCE>
+			<SOURCE name="VCCAUX_PMC" voltage="1.500000" icc="0.067734" iccq="0.002013" power="0.104621">
+			</SOURCE>
+			<SOURCE name="VCCO_503" voltage="1.800000" icc="0.000000" iccq="0.000938" power="0.001688">
+			</SOURCE>
+			<SOURCE name="VCCAUX_SMON" voltage="1.500000" icc="0.000000" iccq="0.002755" power="0.004132">
+			</SOURCE>
+			<SOURCE name="VCCO_500" voltage="1.800000" icc="0.058649" iccq="0.000000" power="0.105569">
+			</SOURCE>
+		</VOLTAGESOURCES>
+		<THERMAL>
+			<AMBIENT value="25.000000">
+			</AMBIENT>
+			<JUNCTION value="100.0 (C)">
+			</JUNCTION>
+			<TJA value="1.64">
+			</TJA>
+		</THERMAL>
+	</ENVIRONMENT>
+	<BLOCKDETAILS>
+		<BYTYPE>
+			<BLOCKTYPE name="Clocks">
+				<CLOCK name="bank1_clkout0" freq="800" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="bank1_clkout0_1" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="bank1_clkout0_2" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="bank1_xpll0_fifo_rd_clk" freq="800" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="bank1_xpll0_fifo_rd_clk_1" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="bank1_xpll0_fifo_rd_clk_2" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="clk_pl_0" freq="100" srcType="External" srcId="103381" srcName="vitis_design_i/CIPS_0/inst/pspmc_0/inst/PS9_inst" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="clkfbout_primitive" freq="100" srcType="MMCM" srcId="133142" srcName="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="clkout1_primitive" freq="104.17" srcType="MMCM" srcId="133142" srcName="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst" FoPerSite="3.852" enableRate="1" sliceEnableRate="0.7353">
+				</CLOCK>
+				<CLOCK name="clkout3_primitive" freq="312.5" srcType="MMCM" srcId="133142" srcName="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst" FoPerSite="5.213" enableRate="1" sliceEnableRate="0.4016">
+				</CLOCK>
+				<CLOCK name="ddr4_dimm1_sma_clk_clk_p" freq="200" srcType="External" srcId="4294967295" srcName="IO_PORT" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="lpddr4_sma_clk1_clk_p" freq="200.32" srcType="External" srcId="4294967295" srcName="IO_PORT" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="lpddr4_sma_clk2_clk_p" freq="200.32" srcType="External" srcId="4294967295" srcName="IO_PORT" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="mc_clk_xpll" freq="800" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="mc_clk_xpll_1" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="mc_clk_xpll_2" freq="976.6" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clk_xpll" freq="3200" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clk_xpll_1" freq="3906" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clk_xpll_2" freq="3906" srcType="XPLL" srcId="172244" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[0]" freq="3200" srcType="XPLL" srcId="172243" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[0]_1" freq="3906" srcType="XPLL" srcId="172243" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[0]_2" freq="3906" srcType="XPLL" srcId="172243" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[2]" freq="3200" srcType="XPLL" srcId="172245" srcName="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[2]_1" freq="3906" srcType="XPLL" srcId="172245" srcName="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+				<CLOCK name="pll_clktoxphy[2]_2" freq="3906" srcType="XPLL" srcId="172245" srcName="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" FoPerSite="1" enableRate="1" sliceEnableRate="0">
+				</CLOCK>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="LOGIC">
+				<LOGIC name="Unassigned_Clock LUTs" hierName="vitis_design_wrapper/vitis_design_i" clockName="Unassigned_Clock" clockFreq="312.5" toggleRate="13.861" luts="8" ru="0">
+				</LOGIC>
+				<LOGIC name="clkout1_primitive LUTs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout1_primitive" clockFreq="104.17" toggleRate="8.657" luts="2200" ru="9.8546">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive LUTs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="7.223" luts="1836" ru="9.2737">
+				</LOGIC>
+				<LOGIC name="clkout1_primitive SRLs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout1_primitive" clockFreq="104.17" toggleRate="0" SRL="7" ru="2.68845">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive SRLs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="31.035" SRL="628" ru="0.011327">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive LUTRAMs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="15.124" RAM="20" ru="14.0168">
+				</LOGIC>
+				<LOGIC name="clkout1_primitive FFs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout1_primitive" clockFreq="104.17" toggleRate="5.949" ffs="2820" ru="10.6103">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive FFs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="5.175" ffs="3455" ru="11.3788">
+				</LOGIC>
+				<LOGIC name="clkout1_primitive HFNs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout1_primitive" clockFreq="104.17" toggleRate="10.373" ffs="41" luts="16" ru="21.594">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive HFNs" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="10.823" ffs="50" luts="28" ru="27.3474">
+				</LOGIC>
+				<LOGIC name="Unassigned_Clock Others" hierName="vitis_design_wrapper/vitis_design_i" clockName="Unassigned_Clock" clockFreq="312.5" toggleRate="11.562" lookahead8="2" ru="0">
+				</LOGIC>
+				<LOGIC name="clkout3_primitive Others" hierName="vitis_design_wrapper/vitis_design_i" clockName="clkout3_primitive" clockFreq="312.5" toggleRate="10.18" lookahead8="60" ru="4.7195">
+				</LOGIC>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="BRAM">
+				<MODULE name="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/clk_out3" count="2">
+					<GROUPSUMMARY>
+						<BRAM name="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/clk_out3" hierName="vitis_design_wrapper/vitis_design_i" mode="RAMB18SDP" toggleRate="7.680690" power="0.004872" sp="0.000788">
+							<RAMPORT name="A" clock="clkout3_primitive" clockFreq="312.5" readWidth="36" writeWidth="18" enableRate="0.659359" writeMode="READ_FIRST" writeRate="0.348804">
+							</RAMPORT>
+							<RAMPORT name="B" clock="clkout3_primitive" clockFreq="312.5" readWidth="18" writeWidth="36" enableRate="1.000000" writeMode="READ_FIRST" writeRate="0.348804">
+							</RAMPORT>
+						</BRAM>
+					</GROUPSUMMARY>
+				</MODULE>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="MMCM">
+				<MMCM name="vitis_design_i/clk_wizard_0/inst/clock_primitive_inst/MMCME5_inst" srcId="133142" clock="vitis_design_i/CIPS_0/inst/pspmc_0/inst/pl0_ref_clk" clockFreq="100" phaseShift="None" interpolators="1" divCounter="1" multCounter="25.000000" clock0Div="24" clock1Div="16" clock2Div="8" clock3Div="32" clock4Div="12" clock5Div="6" clock6Div="4" powerDownRate="0.000000" VCCRAM="0.030426" Vccaux="0.026635">
+				</MMCM>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="XPLL">
+				<XPLL name="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" srcId="172243" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="800" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.024030" Vccaux="0.053180">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" srcId="172243" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="976.6" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.027570" Vccaux="0.057919">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank0" srcId="172243" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="976.6" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.027570" Vccaux="0.057919">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" srcId="172244" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/sys_clk_O" clockFreq="200" divCounter="1" multCounter="16" clock0Div="4" clock1Div="4" clock2Div="4" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.022453" Vccaux="0.053180">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" srcId="172244" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/sys_clk_O" clockFreq="200.32" divCounter="2" multCounter="39" clock0Div="4" clock1Div="4" clock2Div="4" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.025161" Vccaux="0.057919">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank1" srcId="172244" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/sys_clk_O" clockFreq="200.32" divCounter="2" multCounter="39" clock0Div="4" clock1Div="4" clock2Div="4" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.025161" Vccaux="0.057919">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" srcId="172245" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="800" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.024030" Vccaux="0.053180">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" srcId="172245" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="976.6" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.027570" Vccaux="0.057919">
+				</XPLL>
+				<XPLL name="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_xpll0_bank2" srcId="172245" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/bank1_clkout0" clockFreq="976.6" divCounter="2" multCounter="8" clock0Div="2" clock1Div="8" clock2Div="2" clock3Div="2" clock4Div="0" clock5Div="0" powerDownRate="0.000000" Vccint_io="0.027570" Vccaux="0.057919">
+				</XPLL>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="IO">
+				<MODULE name="ch0_lpddr4_c0_ca_a&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_ca_a&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_ca_b&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_ca_b&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_ck_t_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_ck_t_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_ck_t_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_ck_t_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_cke_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_cke_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_cke_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_cke_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_cs_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_cs_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_cs_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_cs_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dmi_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dmi_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dmi_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dmi_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dq_a&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dq_a&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dq_b&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dq_b&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dqs_t_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dqs_t_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_dqs_t_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_dqs_t_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c0_reset_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c0_reset_n" clock="" clockFreq="0.000000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="Async" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_ca_a&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_ca_a&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_ca_b&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_ca_b&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_ck_t_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_ck_t_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_ck_t_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_ck_t_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_cke_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_cke_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_cke_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_cke_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_cs_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_cs_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_cs_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_cs_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dmi_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dmi_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dmi_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dmi_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dq_a&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dq_a&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dq_b&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dq_b&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dqs_t_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dqs_t_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_dqs_t_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_dqs_t_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch0_lpddr4_c1_reset_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch0_lpddr4_c1_reset_n" clock="" clockFreq="0.000000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="Async" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_ca_a&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_ca_a&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_ca_b&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_ca_b&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_ck_t_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_ck_t_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_ck_t_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_ck_t_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_cke_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_cke_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_cke_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_cke_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_cs_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_cs_a" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_cs_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_cs_b" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dmi_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dmi_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="710" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dmi_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dmi_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dq_a&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dq_a&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="710" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dq_b&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dq_b&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dqs_t_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dqs_t_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="710" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_dqs_t_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_dqs_t_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="709" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c0_reset_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c0_reset_n" clock="" clockFreq="0.000000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="Async" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_ca_a&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_ca_a&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_ca_b&lt;0:5&gt;" count="6">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_ca_b&lt;0:5&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="6" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.043755" vccoCurrent="0.039778" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_ck_t_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_ck_t_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_ck_t_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_ck_t_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.014585" vccoCurrent="0.013259" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_cke_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_cke_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_cke_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_cke_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_cs_a" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_cs_a" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_cs_b" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_cs_b" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1953.125000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="703" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dmi_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dmi_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dmi_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dmi_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.004950" vcco="0.005445" vccoCurrent="0.004950" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dq_a&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dq_a&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dq_b&lt;0:15&gt;" count="16">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dq_b&lt;0:15&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="LVSTL_11_VOH50" bidis="16" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.039600" vcco="0.043560" vccoCurrent="0.039600" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dqs_t_a&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dqs_t_a&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_dqs_t_b&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_dqs_t_b&lt;0:1&gt;" clock="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1953.124146" ioStandard="DIFF_LVSTL_11_VOH50" bidis="2" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="1.000000" dcitermDisable="0.500000" tControl="OFF" ioBank="704" vccInt="0.000000" vccAux="0.000000" vcco="0.010890" vccoCurrent="0.009900" extTerm="FP_GND_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ch1_lpddr4_c1_reset_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ch1_lpddr4_c1_reset_n" clock="" clockFreq="0.000000" ioStandard="LVSTL_11_VOH50" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="Async" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.000000" vcco="0.007293" vccoCurrent="0.006630" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_act_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_act_n" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.007294" vccoCurrent="0.006078" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_adr&lt;0:16&gt;" count="17">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_adr&lt;0:16&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="17" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.123993" vccoCurrent="0.103328" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_ba&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_ba&lt;0:1&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="2" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.014587" vccoCurrent="0.012156" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_bg&lt;0:1&gt;" count="2">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_bg&lt;0:1&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="2" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.014587" vccoCurrent="0.012156" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_ck_t" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_ck_t" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="DIFF_SSTL12" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.014471" vccoCurrent="0.012059" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_cke" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_cke" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.007294" vccoCurrent="0.006078" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_cs_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_cs_n" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.007294" vccoCurrent="0.006078" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_dm_n&lt;0:7&gt;" count="8">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_dm_n&lt;0:7&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1600.000000" ioStandard="POD12" bidis="8" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="700" vccInt="0.000000" vccAux="0.019800" vcco="0.047127" vccoCurrent="0.039273" extTerm="FP_VCCO_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_dq&lt;0:63&gt;" count="64">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_dq&lt;0:63&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[2]" clockFreq="1600.000000" ioStandard="POD12" bidis="64" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="702" vccInt="0.000000" vccAux="0.158400" vcco="0.377018" vccoCurrent="0.314182" extTerm="FP_VCCO_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_dqs_t&lt;0:7&gt;" count="8">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_dqs_t&lt;0:7&gt;" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clktoxphy[0]" clockFreq="1600.000000" ioStandard="DIFF_POD12" bidis="8" inputs="0" outputs="0" signalRate="244.140625" toggleRate="0.000000" outputEnableRate="0.500000" outputLoad="0.000000" dataRate="DDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="RTT_40" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="700" vccInt="0.000000" vccAux="0.019800" vcco="0.132440" vccoCurrent="0.110367" extTerm="FP_VCCO_50">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_odt" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_odt" clock="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/pll_clk_xpll" clockFreq="1600.000000" ioStandard="SSTL12" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="SDR" serdes="Yes" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_40_40" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="701" vccInt="0.000000" vccAux="0.000000" vcco="0.007294" vccoCurrent="0.006078" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_reset_n" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_reset_n" clock="" clockFreq="0.000000" ioStandard="LVCMOS12_8_SLOW" bidis="0" inputs="0" outputs="1" signalRate="488.281250" toggleRate="0.000000" outputEnableRate="1.000000" outputLoad="0.000000" dataRate="Async" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="No" inTerm="NONE" outTerm="RDRV_NONE_NONE" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="700" vccInt="0.000000" vccAux="0.000000" vcco="0.005681" vccoCurrent="0.004734" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="ddr4_dimm1_sma_clk_clk_p" count="1">
+					<GROUPSUMMARY>
+						<IO name="ddr4_dimm1_sma_clk_clk_p" clock="ddr4_dimm1_sma_clk_clk_p" clockFreq="200.000001" ioStandard="LVDS15" bidis="0" inputs="1" outputs="0" signalRate="400.000000" toggleRate="0.000000" dataRate="Clock" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="Yes" inTerm="RTT_NONE" outTerm="NONE" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="700" vccInt="0.000000" vccAux="0.002520" vcco="0.000000" vccoCurrent="0.000000" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="lpddr4_sma_clk1_clk_p" count="1">
+					<GROUPSUMMARY>
+						<IO name="lpddr4_sma_clk1_clk_p" clock="lpddr4_sma_clk1_clk_p" clockFreq="200.320507" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="1" outputs="0" signalRate="400.641022" toggleRate="0.000000" dataRate="Clock" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="Yes" inTerm="RTT_NONE" outTerm="NONE" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="711" vccInt="0.000000" vccAux="0.002475" vcco="0.000000" vccoCurrent="0.000000" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+				<MODULE name="lpddr4_sma_clk2_clk_p" count="1">
+					<GROUPSUMMARY>
+						<IO name="lpddr4_sma_clk2_clk_p" clock="lpddr4_sma_clk2_clk_p" clockFreq="200.320507" ioStandard="DIFF_LVSTL_11_VOH50" bidis="0" inputs="1" outputs="0" signalRate="400.641022" toggleRate="0.000000" dataRate="Clock" serdes="No" preEmphasis="No" ioDelay="No" ibufLowPower="Yes" inTerm="RTT_NONE" outTerm="NONE" ibufDisable="0.000000" dcitermDisable="0.000000" tControl="OFF" ioBank="705" vccInt="0.000000" vccAux="0.002475" vcco="0.000000" vccoCurrent="0.000000" extTerm="NONE">
+						</IO>
+					</GROUPSUMMARY>
+				</MODULE>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="AIE">
+				<AIE_MODULE name="ai_engine_0" clk_freq="1250.000000" num_cores="143" kernelType="Int16" int_core_load="0.599999" memRate="0.200000" numMemBanks="742" numPlStreams="2" numNocStreams="0" num_tiles="226" interconnectLoad="0.115799">
+				</AIE_MODULE>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="NOC">
+				<BLOCKTYPE name="NOC">
+					<CLK clk_freq="1000.000000" used_clk_buffers="31" total_clk_buffers="64" dfx_usage="FLAT" num_rps="0" isClockGatingDisabled="0">
+					</CLK>
+					<PATH name="vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST" dataPath="PS-&gt;AIE" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S00_AXI_nmu/bd_27ec_S00_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="128.000000" write_bw="160.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="5" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST" dataPath="PS-&gt;AIE" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="128.000000" write_bw="160.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="4" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S01_AXI_nmu/bd_27ec_S01_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port1/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST" dataPath="PS-&gt;AIE" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="14" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="128.000000" write_bw="160.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="5" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S02_AXI_nmu/bd_27ec_S02_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port3/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST" dataPath="PS-&gt;AIE" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="14" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="64.000000" write_bw="80.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S03_AXI_nmu/bd_27ec_S03_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port7/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="128.000000" write_bw="160.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="4" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S04_AXI_nmu/bd_27ec_S04_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="5" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S05_AXI_nmu/bd_27ec_S05_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="2" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S06_AXI_rpu/bd_27ec_S06_AXI_rpu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PS-&gt;DDRC" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="4" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/vitis_design_i/cips_noc/inst/M00_AXI_nsu/bd_27ec_M00_AXI_nsu_0_top_INST/NOC_NSU128_INST" dataPath="PMC-&gt;AIE" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="14" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PMC-&gt;DDRC" read_bw="5.000000" write_bw="6.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="4" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PMC-&gt;DDRC" read_bw="3.000000" write_bw="3.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="13" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/cips_noc/inst/S07_AXI_nmu/bd_27ec_S07_AXI_nmu_0_top_INST/NOC_NMU128_INST/Port0/vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PMC-&gt;DDRC" read_bw="3.000000" write_bw="3.000000" read_transaction_size="64.000000" write_transaction_size="64.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/noc_ddr4/inst/S00_AXI_nmu/bd_90d1_S00_AXI_nmu_0_top_INST/NOC_NMU512_INST/Port1/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PL-&gt;DDRC" read_bw="1192.000000" write_bw="1788.000000" read_transaction_size="32.000000" write_transaction_size="32.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+					<PATH name="vitis_design_i/noc_ddr4/inst/S01_AXI_nmu/bd_90d1_S01_AXI_nmu_0_top_INST/NOC_NMU512_INST/Port3/vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" dataPath="PL-&gt;DDRC" read_bw="1192.000000" write_bw="1788.000000" read_transaction_size="32.000000" write_transaction_size="32.000000" num_switches="7" num_nps6="0" num_nidb="0" num_ncrb="0" Vccint_soc="">
+					</PATH>
+				</BLOCKTYPE>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="HMC">
+				<HMC name="vitis_design_i/noc_ddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" standard="DDR4_SDRAM" eccUsage="Disabled" channels="1" dataRate="3200.000000" dataWidth="64" totalDataWidth="64" readBandwidth="2916.000000" writeBandwidth="4240.000000" inputTermination="RTT_40" outputTermination="RDRV_40" Vcc_soc="0.161063">
+				</HMC>
+				<HMC name="vitis_design_i/noc_lpddr4/inst/MC0_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" standard="LPDDR4_SDRAM" eccUsage="Disabled" channels="2" dataRate="3906.000000" dataWidth="32" totalDataWidth="32" readBandwidth="259.000000" writeBandwidth="323.000000" inputTermination="RTT_40" outputTermination="RDRV_40" Vcc_soc="0.061414">
+				</HMC>
+				<HMC name="vitis_design_i/noc_lpddr4/inst/MC1_ddrc/inst/noc_ddr4_phy/inst/u_ddrmc_main" standard="LPDDR4_SDRAM" eccUsage="Disabled" channels="2" dataRate="3906.000000" dataWidth="32" totalDataWidth="32" readBandwidth="259.000000" writeBandwidth="323.000000" inputTermination="RTT_40" outputTermination="RDRV_40" Vcc_soc="0.061414">
+				</HMC>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="PS9">
+				<PS9>
+					<FPD>
+						<PROCESSOR name="A-72" numCores="2" clockFreq="1350.000000" load="0.900000">
+						</PROCESSOR>
+						<MEMORY name="L2 Cache" numCores="1">
+						</MEMORY>
+						<FPINTERCONNECT clockFreq="824.999939" load="0.900000">
+						</FPINTERCONNECT>
+						<CCI clockFreq="150.000000" load="0.900000">
+						</CCI>
+					</FPD>
+					<LPD>
+						<PROCESSOR name="R-5" numCores="1" clockFreq="600.000000" load="0.900000">
+						</PROCESSOR>
+						<TCM_MEMORY numCores="2">
+						</TCM_MEMORY>
+						<OCM_MEMORY numCores="1">
+						</OCM_MEMORY>
+						<LPINTERCONNECT clockFreq="600.000000" load="0.900000">
+						</LPINTERCONNECT>
+						<IOINTERFACES>
+							<DUAL_GEM gpio="0" clockFreq="124.999992" load="0.000000">
+							</DUAL_GEM>
+							<USB gpio="13" clockFreq="20.000000" load="0.500000">
+							</USB>
+							<LOW_PERF_IOS gpio="6" clockFreq="100.000000" load="0.500000">
+							</LOW_PERF_IOS>
+						</IOINTERFACES>
+						<GPIO>
+							<Bank ioBank="VCC_PMIO2" number="0" io_standard="LVCMOS 1.8V">
+							</Bank>
+						</GPIO>
+					</LPD>
+				</PS9>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="PMC">
+				<PMC>
+					<CORE_SUBSYSTEM clockFreq="400.000000" load="0.900000">
+					</CORE_SUBSYSTEM>
+					<PLLS>
+						<PLL domain="PPLL" vco="2400.000000">
+						</PLL>
+						<PLL domain="NPLL" vco="4000.000000">
+						</PLL>
+					</PLLS>
+					<GPIO>
+						<Bank ioBank="VCC_PMIO0" io_standard="">
+						</Bank>
+						<Bank ioBank="VCC_PMIO1" io_standard="">
+						</Bank>
+					</GPIO>
+					<IOINTERFACES>
+						<IO name="QSPI" ioStandard="" ioBank="" clkFreq="300.000000" usageRate="0.500000" inputs="0" outputs="5" bidis="8">
+						</IO>
+						<IO name="SD1" ioStandard="LVCMOS18" ioBank="" clkFreq="200.000000" usageRate="0.500000" inputs="1" outputs="2" bidis="9">
+						</IO>
+						<IO name="GPIO0" ioStandard="LVCMOS18" ioBank="" clkFreq="1.000000" usageRate="0.500000" inputs="0" outputs="0" bidis="0">
+						</IO>
+						<IO name="GPIO1" ioStandard="LVCMOS18" ioBank="" clkFreq="1.000000" usageRate="0.500000" inputs="0" outputs="1" bidis="0">
+						</IO>
+					</IOINTERFACES>
+					<INTERCONNECT clockFreq="400.000000" load="0.500000">
+					</INTERCONNECT>
+				</PMC>
+			</BLOCKTYPE>
+			<BLOCKTYPE name="IOBANK">
+				<IOBANK numInternalVref="0" numDelayControl="0" numLVDSBanks="1">
+				</IOBANK>
+			</BLOCKTYPE>
+		</BYTYPE>
+	</BLOCKDETAILS>
+</POWERDATA>
+

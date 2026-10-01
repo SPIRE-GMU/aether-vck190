@@ -1,0 +1,16 @@
+Work/
+Work_x86/
+aiesimulator_output/
+x86simulator_output/
+.aie-shim-include/
+libadf.a
+*.log
+*.jou
+sol.db
+ISS_RPC_SERVER_PORT
+pl_sample_counts
+Map_Report.csv
+_x/
+*.xsa
+*.xo
+.Xil/
