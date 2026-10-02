@@ -1,5 +1,7 @@
 # AETHER
 
+*TFHE acceleration on the AMD Versal AI Engine array (VCK190 / XCVC1902).*
+
 **AETHER** is a TFHE external-product accelerator for the AMD Versal
 VCK190, built entirely on the AI Engine (AIE) array. It provides two
 implementations of the full external product
